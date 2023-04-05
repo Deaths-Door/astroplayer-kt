@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="11">
+      <module name="AstroPlayer.astroplayer-core.commonMain" target="1.8" />
+      <module name="AstroPlayer.astroplayer-core.commonTest" target="1.8" />
+      <module name="AstroPlayer.astroplayer-core.jvmMain" target="1.8" />
+      <module name="AstroPlayer.astroplayer-core.jvmTest" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
