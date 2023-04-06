@@ -10,6 +10,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import com.deathsdoor.astroplayer.databinding.ActivityMainBinding
+import com.deathsdoor.astroplayer_core.AstroPlayer
+import com.deathsdoor.astroplayer_core.platfromCommonFunctions.seekForwardBy
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,7 +34,6 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

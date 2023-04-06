@@ -32,7 +32,6 @@ actual class AstroPlayer private actual constructor() {
 
     actual val isPlaying: Boolean get() = mediaPlayer.isPlaying
     actual val isPaused: Boolean get() =  !isPlaying && currentMediaItemIndex >= 0
-    actual val isStopped: Boolean get() = currentMediaItemIndex == 0 && !isPlaying
 
     actual var playBackSpeed: Float = 1f
         set(value){
@@ -53,14 +52,9 @@ actual class AstroPlayer private actual constructor() {
      * Seeking
      * **/
     actual fun seekTo(milliseconds: Long) = mediaPlayer.seekTo(milliseconds)
-    actual fun seekForwardBy(milliseconds: Long) = seekTo(currentMediaItemPosition + milliseconds)
-    actual fun seekBackwardBy(milliseconds: Long) = seekTo(currentMediaItemPosition - milliseconds)
 
     actual fun seekToNextMediaItem() = mediaPlayer.seekToNextMediaItem()
     actual fun seekToPreviousMediaItem() = mediaPlayer.seekToPreviousMediaItem()
-
-    actual fun seekToStartOfMediaItem() = seekTo(0)
-    actual fun seekToEndOfMediaItem() = seekTo(mediaPlayer.duration)
 
     /**
      *  MediaItem
@@ -68,13 +62,7 @@ actual class AstroPlayer private actual constructor() {
     private val MediaItem.asExoplayerMediaItem : ExoplayerMediaItem get() = TODO("")
     private val List<MediaItem>.asExoplayerMediaItem : List<ExoplayerMediaItem> get() = this.map { it.asExoplayerMediaItem }
 
-    actual val totalMediaItems: Int get() = mediaItems.size
     actual val currentMediaItemIndex: Int get() = mediaPlayer.currentMediaItemIndex
-
-    actual val currentMediaItem : MediaItem get() = mediaItems[currentMediaItemIndex]
-    actual val currentMediaItemMetadata : MediaMetadata get() = currentMediaItem.metadata
-
-    actual val currentMediaItemTrackLength: Long get() = currentMediaItemMetadata.trackLength
     actual val currentMediaItemPosition: Long get() = mediaPlayer.currentPosition
 
     internal actual fun updatePlayerAfterClear() = this.mediaPlayer.clearMediaItems()
@@ -106,22 +94,28 @@ actual class AstroPlayer private actual constructor() {
 
     //TODO update equalizer when variable Hz changed
     actual var currentEqualizerValues: EqualizerValues = Equalizer.Default
+        set(value){
+            if(!isEqualizerEnabled) throw IllegalArgumentException("Can't set equalizer preset if isEqualizerEnabled = false")
 
-    @Throws(IllegalArgumentException::class)
-    actual fun equalizerPreset(preset: EqualizerValues) {
-        if(!isEqualizerEnabled) throw IllegalArgumentException("Can't set equalizer preset if isEqualizerEnabled = false")
-        currentEqualizerValues = preset
-        val equalizer = ExoplayerEqualizer(0, mediaPlayer.audioSessionId)
-        equalizer.enabled = true
-        val bandLevels = intArrayOf(
-            (preset.hz60 / 100).toInt(),
-            (preset.hz230 / 100).toInt(),
-            (preset.hz910 / 100).toInt(),
-            (preset.hz3600 / 100).toInt(),
-            (preset.hz14000 / 100).toInt()
-        )
-        for(x in 0 until equalizer.numberOfBands){
-            equalizer.setBandLevel(x.toShort(),bandLevels[x].toShort())
+            field = value
+
+            val equalizer = ExoplayerEqualizer(0, mediaPlayer.audioSessionId)
+            equalizer.enabled = true
+            val bandLevels = intArrayOf(
+                (field.hz60 / 100).toInt(),
+                (field.hz230 / 100).toInt(),
+                (field.hz910 / 100).toInt(),
+                (field.hz3600 / 100).toInt(),
+                (field.hz14000 / 100).toInt()
+            )
+            for(x in 0 until equalizer.numberOfBands){
+                equalizer.setBandLevel(x.toShort(),bandLevels[x].toShort())
+            }
         }
-    }
+
+    /**
+     * PlayBackListener
+     * */
+    //TODO add it to mediaPlayer
+    actual var mediaEventListener : MediaEventListener? = null
 }

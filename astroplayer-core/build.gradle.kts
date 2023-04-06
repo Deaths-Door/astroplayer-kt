@@ -50,11 +50,7 @@ kotlin {
 
         val jvmMain by getting {
             dependencies {
-             //   implementation(npm("react-player","2.12.0"))
-           //     implementation("org.openjfx:javafx-media:17")
-                //   implementation("org.openjfx:javafx-media:21-ea+5")
-                //   implementation("org.openjfx:javafx-controls:17.0.0.1")
-               // implementation("org.openjfx:javafx-media:17.0.0.1")
+                implementation("org.openjfx:javafx-media:17.0.6")
              //   implementation("uk.co.caprica:vlcj:4.7.1")
             }
         }
@@ -69,6 +65,10 @@ kotlin {
                 //implementation("org.webjars.npm", "mediaelement", "4.2.16")
                 //       implementation("com.github.almasb:howler:2.3.4")
             }
+        }
+
+        val jsTest by getting {
+            dependsOn(commonTest)
         }
     }
 }

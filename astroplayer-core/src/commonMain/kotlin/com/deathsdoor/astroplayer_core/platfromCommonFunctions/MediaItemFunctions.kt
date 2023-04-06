@@ -30,7 +30,6 @@ fun AstroPlayer.addMediaItems(mediaItems: List<MediaItem>){
 fun AstroPlayer.addMediaItems(index:Int, mediaItems: List<MediaItem>){
     this.mediaItems.addAll(index,mediaItems)
     this.updatePlayerAfterAddMediaItems(index,mediaItems)
-
 }
 
 fun AstroPlayer.remove(mediaItem: MediaItem){

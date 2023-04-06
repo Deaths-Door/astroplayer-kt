@@ -19,40 +19,29 @@ expect class AstroPlayer private constructor(){
 
     val isPlaying : Boolean
     val isPaused : Boolean
-    val isStopped : Boolean
+
+    var playBackSpeed : Float
 
     /**
      * Volume
      * */
     internal var previousUnMutedVolume : Float
     var volume : Float
-    var playBackSpeed : Float
 
     /**
      * Seeking
      * **/
+    //TODO these functions seeking need to take into account repeat mode shuffle etc
     fun seekTo(milliseconds : Long)
-    //TODO move them to common as all use common implementation with seekTo platform specific
-    fun seekForwardBy(milliseconds : Long)
-    fun seekBackwardBy(milliseconds : Long)
 
     fun seekToNextMediaItem()
     fun seekToPreviousMediaItem()
 
-    fun seekToEndOfMediaItem()
-    fun seekToStartOfMediaItem()
-
     /**
      *  MediaItem
      * **/
-    val totalMediaItems : Int
     val currentMediaItemIndex : Int
-
-    val currentMediaItemTrackLength : Long
     val currentMediaItemPosition : Long
-
-    val currentMediaItem : MediaItem
-    val currentMediaItemMetadata : MediaMetadata
 
     //To update media players after adding to mediaitems list
     internal fun updatePlayerAfterClear()
@@ -77,6 +66,9 @@ expect class AstroPlayer private constructor(){
     var isEqualizerEnabled : Boolean
     var isSmartEqualizerEnabled : Boolean
     var currentEqualizerValues : EqualizerValues
-    @Throws(IllegalArgumentException::class)
-    fun equalizerPreset(preset : EqualizerValues)
+
+    /**
+     * PlayBackListener
+     * */
+     var mediaEventListener : MediaEventListener?
 }
