@@ -22,7 +22,7 @@ actual class AstroPlayer private actual constructor() {
     }
 
     private lateinit var mediaPlayer: ExoPlayer
-    internal actual val mediaItems : ArrayList<MediaItem> = ArrayList()
+    internal actual val mediaItems : MutableList<MediaItem> = mutableListOf()
     /**
      * Playback
      * */
@@ -116,6 +116,11 @@ actual class AstroPlayer private actual constructor() {
     /**
      * PlayBackListener
      * */
-    //TODO add it to mediaPlayer
+    private var playerListener : Player.Listener? = null
     actual var mediaEventListener : MediaEventListener? = null
+        set(value){
+            field = value
+        //    if(value == null) mediaPlayer.removeListener(playerListener!!)
+         //   else mediaPlayer.addListener()
+        }
 }

@@ -8,13 +8,12 @@ import com.deathsdoor.astroplayer_core.platfromCommonFunctions.currentMediaItem
 
 @Suppress("UNUSED")
 actual class AstroPlayer private actual constructor() {
-    //TODO just for testing and for now
     companion object {
         fun create() = AstroPlayer()
     }
 
     private val mediaPlayer : dynamic = js("new MediaElement('audio',{features: [],success: function (media, node, instance) {media.load();}})")
-    internal actual val mediaItems: ArrayList<MediaItem> = ArrayList()
+    internal actual val mediaItems: MutableList<MediaItem> = mutableListOf()
     /**
      * Playback
      * */

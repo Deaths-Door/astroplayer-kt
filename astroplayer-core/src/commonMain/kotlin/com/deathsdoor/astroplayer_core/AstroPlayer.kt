@@ -9,7 +9,7 @@ import com.deathsdoor.astroplayer_core.equalizer.EqualizerValues
 //TODO add event listeners
 /* changed to next/ previous media item ,onPaused / onPlayed/ onFastForward / onFastBackwards like that */
 expect class AstroPlayer private constructor(){
-    internal val mediaItems : ArrayList<MediaItem>
+    internal val mediaItems : MutableList<MediaItem>
     /**
      * Playback
      * */

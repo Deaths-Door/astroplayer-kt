@@ -7,6 +7,7 @@ repositories {
     google()
     mavenCentral()
     maven("https://maven.webjars.io") // Add the WebJars Maven repository
+    maven("https://repo.maven.apache.org/maven2/org/openjfx") // for javafx-media repository
 }
 
 android {
@@ -50,8 +51,7 @@ kotlin {
 
         val jvmMain by getting {
             dependencies {
-                implementation("org.openjfx:javafx-media:17.0.6")
-             //   implementation("uk.co.caprica:vlcj:4.7.1")
+                implementation("uk.co.caprica:vlcj:4.8.2")
             }
         }
 
@@ -62,8 +62,6 @@ kotlin {
         val jsMain by getting {
             dependencies {
                 implementation(npm("mediaelement", "4.2.16"))
-                //implementation("org.webjars.npm", "mediaelement", "4.2.16")
-                //       implementation("com.github.almasb:howler:2.3.4")
             }
         }
 
