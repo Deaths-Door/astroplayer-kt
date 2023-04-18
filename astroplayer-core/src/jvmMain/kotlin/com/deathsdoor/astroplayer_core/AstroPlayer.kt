@@ -4,22 +4,9 @@ import com.deathsdoor.astroplayer_core.dataclasses.MediaItem
 import com.deathsdoor.astroplayer_core.enums.RepeatMode
 import com.deathsdoor.astroplayer_core.equalizer.EqualizerValues
 
+@Suppress("UNUSED")
 actual class AstroPlayer private actual constructor(){
     internal actual val mediaItems: MutableList<MediaItem> = mutableListOf()
-//    private var mediaPlayer: MediaPlayer
-   /* init {
-        NativeDiscovery().discover()
-        mediaPlayer = CallbackMediaPlayerComponent().mediaPlayer()
-            //EmbeddedMediaPlayerComponent().mediaPlayer()
-    }*/
-
-
-    fun testStart(){
-   //     mediaPlayer.media().start("C:\\Users\\Aarav Aditya Shah\\Desktop\\Alan Walker - Different World (feat. Sofia Carson, K-391  CORSAK).mp3")
-        Thread.sleep(10000)
-     //   mediaPlayer.release()
-    }
-
     /**
      * Playback
      * */

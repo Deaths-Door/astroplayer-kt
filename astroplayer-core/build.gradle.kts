@@ -27,9 +27,11 @@ kotlin {
         nodejs()
         binaries.executable()
     }
+    /*
     ios()
     iosX64()
     iosArm64()
+    */
     sourceSets {
         val commonTest by getting {
             dependencies {
@@ -43,11 +45,11 @@ kotlin {
             }
         }
 
-        val iosMain by getting {
+       /* val iosMain by getting {
             dependencies {
            //     implementation("com.apple:MediaPlayer-framework:1.0.0")
             }
-        }
+        }*/
 
         val jvmMain by getting {
             dependencies {
