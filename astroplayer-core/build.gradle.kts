@@ -15,7 +15,7 @@ repositories {
 publishing {
     val repoName = "AstroPlayer"
     val groupName = "com.deathsdoor.astroplayer"
-    val currentVersion = "0.0.3"
+    val currentVersion = "0.0.6"
     val repoURL = "https://github.com/Deaths-Door/AstroPlayer"
     repositories {
         maven {
@@ -69,11 +69,8 @@ kotlin {
     iosArm64()
     */
     sourceSets {
-       /* val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-            }
-        }*/
+			
+        val commonMain by getting
 
         val androidMain by getting {
             dependencies {
