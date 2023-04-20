@@ -13,24 +13,28 @@ repositories {
 }
 
 publishing {
+    val repoName = "AstroPlayer"
+    val groupName = "com.deathsdoor.astroplayer"
+    val currentVersion = "0.0.3"
+    val repoURL = "https://github.com/Deaths-Door/AstroPlayer"
     repositories {
         maven {
-            url = uri("https://github.com/Deaths-Door/AstroPlayer")
-            name = "AstroPlayer"
-            group = "com.deathsdoor.astroplayer"
-            version = "0.1.0"
+            url = uri(repoURL)
+            name = repoName
+            group = groupName
+            version = currentVersion
         }
     }
     publications {
         register("maven", MavenPublication::class) {
-            from(components["kotlin"])
-            groupId = "com.deathsdoor.astroplayer"
-            artifactId = "astroplayer"
-            version = "0.1.0"
+             rom(components["commonMain"])
+            groupId = groupName
+            artifactId = "astroplayer-core"
+            version = currentVersion
             pom {
-                name.set("AstroPlayer")
+                name.set(repoName)
                 description.set("AstroPlayer is an open-source media player designed for the Kotlin Multiplatform Mobile (KMM) framework. It provides a simple API for audio playback and supports multiple media formats.")
-                url.set("https://github.com/Deaths-Door/AstroPlayer")
+                url.set(repoURL)
                 licenses {
                     license {
                         name.set("The Apache License, Version 2.0")
