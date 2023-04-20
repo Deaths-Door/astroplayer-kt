@@ -1,7 +1,9 @@
 plugins {
     kotlin("multiplatform")
-    id("com.android.library")
-    id("maven-publish")
+    id("com.android.library")    
+    id("com.vanniktech.maven.publish.base")
+
+  //  id("maven-publish")
 }
 
 repositories {
@@ -12,7 +14,7 @@ repositories {
    // maven("https://repo.maven.apache.org/maven2/org/openjfx") // for javafx-media repository
 }
 
-publishing {
+/*publishing {
     val repoName = "AstroPlayer"
     val groupName = "com.deathsdoor.astroplayer"
     val currentVersion = "0.0.6"
@@ -44,7 +46,7 @@ publishing {
             }
         }
     }
-}
+}*/
 
 android {
     namespace = "com.deathsdoor.astroplayer"
