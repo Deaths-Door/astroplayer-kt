@@ -27,7 +27,7 @@ publishing {
     }
     publications {
         register("maven", MavenPublication::class) {
-             rom(components["commonMain"])
+            from(components["commonMain"])
             groupId = groupName
             artifactId = "astroplayer-core"
             version = currentVersion
