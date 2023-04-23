@@ -18,10 +18,14 @@ actual class AstroPlayer private actual constructor() {
         this.mediaPlayer = ExoPlayer.Builder(context).build()
     }
     constructor(exoplayer: ExoPlayer) : this() {
-        this.mediaPlayer = exoplayer
+        this.mediaPlayer = exoplayer.also { it.prepare() }
     }
 
-    private lateinit var mediaPlayer: ExoPlayer
+    private var _mediaPlayer: ExoPlayer? = null
+    var mediaPlayer get() = _mediaPlayer!!
+        set(value) {
+            _mediaPlayer = value
+        }
     internal actual val mediaItems : MutableList<MediaItem> = mutableListOf()
     /**
      * Playback

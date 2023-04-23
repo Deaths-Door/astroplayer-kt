@@ -29,4 +29,5 @@ data class MediaMetadata (
     val mood : String? = null,
     val sprache : String? = null,
     val lyrics : String? = null,
+    val isLiked : Boolean = false
 )
