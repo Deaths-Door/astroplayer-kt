@@ -14,6 +14,7 @@ package com.deathsdoor.astroplayer_core.equalizer
 *       - Decay Time
 *  - Room Size
 * */
+@ExperimentalMultiplatform
 interface EqualizerValues {
     var hz60 : Float
     var hz230 : Float

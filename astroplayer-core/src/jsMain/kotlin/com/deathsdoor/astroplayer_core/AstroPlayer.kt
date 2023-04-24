@@ -112,13 +112,17 @@ actual class AstroPlayer private actual constructor() {
     /**
      * Equalizer
      * **/
+    @ExperimentalMultiplatform
     actual var isEqualizerEnabled: Boolean = false
+    @ExperimentalMultiplatform
     actual var isSmartEqualizerEnabled: Boolean = false
+    @ExperimentalMultiplatform
     actual var currentEqualizerValues: EqualizerValues = Equalizer.Default
 
     /**
      * PlayBackListener
      * */
+    @ExperimentalMultiplatform
     //TODO add it to mediaPlayer
     actual var mediaEventListener : MediaEventListener? = null
 }

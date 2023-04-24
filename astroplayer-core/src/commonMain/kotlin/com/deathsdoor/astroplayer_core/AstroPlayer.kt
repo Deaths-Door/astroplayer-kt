@@ -63,12 +63,16 @@ expect class AstroPlayer private constructor(){
     /**
      * Equalizer
      * **/
+    @ExperimentalMultiplatform
     var isEqualizerEnabled : Boolean
+    @ExperimentalMultiplatform
     var isSmartEqualizerEnabled : Boolean
+    @ExperimentalMultiplatform
     var currentEqualizerValues : EqualizerValues
 
     /**
      * PlayBackListener
      * */
-     var mediaEventListener : MediaEventListener?
+    @ExperimentalMultiplatform
+    var mediaEventListener : MediaEventListener?
 }

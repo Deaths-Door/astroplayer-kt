@@ -1,21 +1,20 @@
 package com.deathsdoor.astroplayer_core
 
 import android.content.Context
+import android.net.Uri
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 import com.deathsdoor.astroplayer_core.dataclasses.MediaItem
-import com.deathsdoor.astroplayer_core.dataclasses.MediaMetadata
 import com.deathsdoor.astroplayer_core.enums.RepeatMode
 import com.deathsdoor.astroplayer_core.equalizer.Equalizer
 import com.deathsdoor.astroplayer_core.equalizer.EqualizerValues
-import kotlin.collections.ArrayList
-import androidx.media3.common.MediaItem as ExoplayerMediaItem
 import android.media.audiofx.Equalizer as ExoplayerEqualizer
+import androidx.media3.common.MediaItem as ExoplayerMediaItem
 
 @Suppress("UNUSED")
 actual class AstroPlayer private actual constructor() {
     constructor(context: Context) : this() {
-        this.mediaPlayer = ExoPlayer.Builder(context).build()
+        this.mediaPlayer = ExoPlayer.Builder(context).build().also { it.prepare() }
     }
     constructor(exoplayer: ExoPlayer) : this() {
         this.mediaPlayer = exoplayer.also { it.prepare() }
@@ -27,6 +26,7 @@ actual class AstroPlayer private actual constructor() {
             _mediaPlayer = value
         }
     internal actual val mediaItems : MutableList<MediaItem> = mutableListOf()
+
     /**
      * Playback
      * */
@@ -63,7 +63,16 @@ actual class AstroPlayer private actual constructor() {
     /**
      *  MediaItem
      * **/
-    private val MediaItem.asExoplayerMediaItem : ExoplayerMediaItem get() = TODO("")
+    private val MediaItem.asExoplayerMediaItem : ExoplayerMediaItem get() = ExoplayerMediaItem.Builder()
+        .setMediaId(this.mediaID)
+        .setUri(Uri.parse(this.mediaSource))
+        .setMediaMetadata(
+            androidx.media3.common.MediaMetadata.Builder()
+                .setTitle(this.metadata.title)
+                .setArtist(this.metadata.artist)
+                .build()
+        )
+        .build()
     private val List<MediaItem>.asExoplayerMediaItem : List<ExoplayerMediaItem> get() = this.map { it.asExoplayerMediaItem }
 
     actual val currentMediaItemIndex: Int get() = mediaPlayer.currentMediaItemIndex
@@ -89,14 +98,17 @@ actual class AstroPlayer private actual constructor() {
             //TODO add repeatMode function
         }
     actual val shuffleModeEnabled: Boolean get() = TODO("Not yet implemented")
-    actual fun repeatByGroup(startIndex:Int,endIndex : Int){}
+    actual fun repeatByGroup(startIndex:Int,endIndex : Int) : Unit = TODO("Not yet implemented")
     /**
      * Equalizer
      * **/
+    @ExperimentalMultiplatform
     actual var isEqualizerEnabled: Boolean = false
+    @ExperimentalMultiplatform
     actual var isSmartEqualizerEnabled: Boolean = false
 
     //TODO update equalizer when variable Hz changed
+    @ExperimentalMultiplatform
     actual var currentEqualizerValues: EqualizerValues = Equalizer.Default
         set(value){
             if(!isEqualizerEnabled) throw IllegalArgumentException("Can't set equalizer preset if isEqualizerEnabled = false")
@@ -121,10 +133,6 @@ actual class AstroPlayer private actual constructor() {
      * PlayBackListener
      * */
     private var playerListener : Player.Listener? = null
+    @ExperimentalMultiplatform
     actual var mediaEventListener : MediaEventListener? = null
-        set(value){
-            field = value
-        //    if(value == null) mediaPlayer.removeListener(playerListener!!)
-         //   else mediaPlayer.addListener()
-        }
 }
