@@ -15,7 +15,7 @@ repositories {
 publishing {
     val repoName = "AstroPlayer"
     val groupName = "com.deathsdoor.astroplayer"
-    val currentVersion = "0.0.6"
+    val currentVersion = "0.1.0"
     val repoURL = "https://github.com/Deaths-Door/AstroPlayer"
     repositories {
         maven {
