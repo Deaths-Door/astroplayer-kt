@@ -58,3 +58,14 @@ An enumeration class representing the repeat modes for the AstroPlayer:
 - `remove(mediaItem: MediaItem)` : Removes a single media item from the media items list in the `AstroPlayer` instance.
 - `removeAt(index:Int)` : Removes a media item at the specified index from the media items list in the `AstroPlayer` instance.
 -  `rearrange(from:Int, to:Int)` : Rearranges media items in the media items list by swapping the items at the specified indices in the `AstroPlayer` instance.
+
+
+# Contribution
+ Any contributions, whether they are large or small, are greatly appreciated. This can include major features, bug fixes, additional language translations, recommendations, or unit/integration tests.
+To contribute, please follow these steps:
+-Fork the repository and create your own branch for your changes.
+- Make your changes and ensure that they are thoroughly tested.
+- Submit a pull request with a detailed description of your changes and the problem it solves.
+- All contributions will be thoroughly reviewed and discussed before being merged. Please ensure that your contributions align with the project's goals and coding standards.
+
+Thank you for contributing to this project!
