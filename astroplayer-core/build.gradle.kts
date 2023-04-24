@@ -56,7 +56,9 @@ android {
 }
 
 kotlin {
-    android()
+    android {
+        publishLibraryVariants("release", "debug")
+    }
     jvm()
     js(IR){
         browser()
