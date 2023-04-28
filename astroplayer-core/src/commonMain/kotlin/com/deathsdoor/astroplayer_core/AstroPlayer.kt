@@ -56,8 +56,11 @@ expect class AstroPlayer private constructor(){
      * Repeat Modes
      * */
     internal var repeatedRange : Pair<Int,Int>
+    @ExperimentalMultiplatform
     var repeatMode : RepeatMode
+    @ExperimentalMultiplatform
     val shuffleModeEnabled : Boolean
+    @ExperimentalMultiplatform
     fun repeatByGroup(startIndex:Int,endIndex : Int)
 
     /**

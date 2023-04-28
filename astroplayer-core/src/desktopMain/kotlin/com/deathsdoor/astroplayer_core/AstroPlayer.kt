@@ -4,9 +4,13 @@ import com.deathsdoor.astroplayer_core.dataclasses.MediaItem
 import com.deathsdoor.astroplayer_core.enums.RepeatMode
 import com.deathsdoor.astroplayer_core.equalizer.EqualizerValues
 
-@Suppress("UNUSED")
-actual class AstroPlayer private actual constructor(){
-    internal actual val mediaItems: MutableList<MediaItem> = mutableListOf()
+//TODO add unified builder
+//TODO add event listeners
+/* changed to next/ previous media item ,onPaused / onPlayed/ onFastForward / onFastBackwards like that */
+actual class AstroPlayer private actual constructor() {
+    internal actual val mediaItems: MutableList<MediaItem>
+        get() = TODO("Not yet implemented")
+
     /**
      * Playback
      * */
@@ -87,27 +91,31 @@ actual class AstroPlayer private actual constructor(){
     /**
      * Repeat Modes
      * */
+    @ExperimentalMultiplatform
     internal actual var repeatedRange: Pair<Int, Int>
         get() = TODO("Not yet implemented")
         set(value) {}
+    @ExperimentalMultiplatform
     actual var repeatMode: RepeatMode
         get() = TODO("Not yet implemented")
         set(value) {}
-    actual val shuffleModeEnabled: Boolean
-        get() = TODO("Not yet implemented")
-
-    actual fun repeatByGroup(startIndex: Int, endIndex: Int) {
-    }
+    @ExperimentalMultiplatform
+    actual val shuffleModeEnabled: Boolean get() = TODO("Not yet implemented")
+    @ExperimentalMultiplatform
+    actual fun repeatByGroup(startIndex: Int, endIndex: Int) {}
 
     /**
      * Equalizer
      * **/
+    @ExperimentalMultiplatform
     actual var isEqualizerEnabled: Boolean
         get() = TODO("Not yet implemented")
         set(value) {}
+    @ExperimentalMultiplatform
     actual var isSmartEqualizerEnabled: Boolean
         get() = TODO("Not yet implemented")
         set(value) {}
+    @ExperimentalMultiplatform
     actual var currentEqualizerValues: EqualizerValues
         get() = TODO("Not yet implemented")
         set(value) {}
@@ -115,7 +123,9 @@ actual class AstroPlayer private actual constructor(){
     /**
      * PlayBackListener
      * */
+    @ExperimentalMultiplatform
     actual var mediaEventListener: MediaEventListener?
         get() = TODO("Not yet implemented")
         set(value) {}
+
 }

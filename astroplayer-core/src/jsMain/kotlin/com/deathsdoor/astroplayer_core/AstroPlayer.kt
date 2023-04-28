@@ -103,11 +103,14 @@ actual class AstroPlayer private actual constructor() {
     /**
      * Repeat Modes
      * */
+    @ExperimentalMultiplatform
     internal actual var repeatedRange: Pair<Int, Int> get() = TODO("Not yet implemented") ;set(value) {}
+    @ExperimentalMultiplatform
     actual var repeatMode: RepeatMode get() = TODO("Not yet implemented"); set(value) {}
+    @ExperimentalMultiplatform
     actual val shuffleModeEnabled: Boolean get() = TODO("Not yet implemented")
-    actual fun repeatByGroup(startIndex: Int, endIndex: Int) {
-    }
+    @ExperimentalMultiplatform
+    actual fun repeatByGroup(startIndex: Int, endIndex: Int) {}
 
     /**
      * Equalizer
