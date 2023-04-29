@@ -1,6 +1,7 @@
 package com.deathsdoor.astroplayer_core
 
 import android.content.Context
+import android.media.browse.MediaBrowser
 import android.net.Uri
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
@@ -69,7 +70,7 @@ actual class AstroPlayer private actual constructor() {
         .setMediaMetadata(
             androidx.media3.common.MediaMetadata.Builder()
                 .setTitle(this.metadata.title)
-                .setArtist(this.metadata.artist)
+                .setArtist(this.metadata.artist?.toString())
                 .build()
         )
         .build()
@@ -135,7 +136,37 @@ actual class AstroPlayer private actual constructor() {
     /**
      * PlayBackListener
      * */
-    private var playerListener : Player.Listener? = null
+    @OptIn(ExperimentalMultiplatform::class)
+    private var playerListener : Player.Listener = object : Player.Listener {
+        override fun onPlaybackStateChanged(playbackState: Int) {
+            if(playbackState != Player.STATE_READY) return
+
+            if (mediaPlayer.playWhenReady) mediaEventListener?.onPlaybackPlayed()
+            else mediaEventListener?.onPlaybackPaused()
+        }
+
+        override fun onPositionDiscontinuity(oldPosition: Player.PositionInfo, newPosition: Player.PositionInfo, reason: Int) {
+            // Same media item, no change in playback position
+            if (newPosition.mediaItemIndex == oldPosition.mediaItemIndex) return
+
+            // Transition to next media item
+            if (newPosition.mediaItemIndex > oldPosition.mediaItemIndex) mediaEventListener?.onSeekToNextMediaItem()
+            else mediaEventListener?.onSeekToPreviousMediaItem()
+        }
+
+        override fun onSeekForwardIncrementChanged(seekForwardIncrementMs: Long): Unit  {
+            mediaEventListener?.onSeekForward()
+        }
+
+        override fun onSeekBackIncrementChanged(seekBackIncrementMs: Long) {
+            mediaEventListener?.onSeekBackward()
+        }
+    }
     @ExperimentalMultiplatform
     actual var mediaEventListener : MediaEventListener? = null
+        set(value) {
+            if(value == null) mediaPlayer.removeListener(playerListener)
+            else mediaPlayer.addListener(playerListener)
+            field = value
+        }
 }

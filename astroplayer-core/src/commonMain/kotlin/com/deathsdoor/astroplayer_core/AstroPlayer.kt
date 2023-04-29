@@ -1,13 +1,9 @@
 package com.deathsdoor.astroplayer_core
 
 import com.deathsdoor.astroplayer_core.dataclasses.MediaItem
-import com.deathsdoor.astroplayer_core.dataclasses.MediaMetadata
 import com.deathsdoor.astroplayer_core.enums.RepeatMode
 import com.deathsdoor.astroplayer_core.equalizer.EqualizerValues
 
-//TODO add unified builder
-//TODO add event listeners
-/* changed to next/ previous media item ,onPaused / onPlayed/ onFastForward / onFastBackwards like that */
 expect class AstroPlayer private constructor(){
     internal val mediaItems : MutableList<MediaItem>
     /**

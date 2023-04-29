@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="astroplayer-ui-desktop">
+    <output-path>$PROJECT_DIR$/astroplayer-ui/build/libs</output-path>
+    <root id="archive" name="astroplayer-ui-desktop.jar">
+      <element id="module-output" name="GitHub.AstroPlayer.astroplayer-ui.desktopMain" />
+    </root>
+  </artifact>
+</component>

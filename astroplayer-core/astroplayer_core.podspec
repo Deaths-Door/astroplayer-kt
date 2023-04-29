@@ -1,11 +1,11 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'astroplayer_core'
-    spec.version                  = '1.0'
-    spec.homepage                 = 'https://www.google.comm'
+    spec.version                  = '0.1.0'
+    spec.homepage                 = 'https://www.google.com'
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''
-    spec.summary                  = 'AstroPlayer is an open-source media player designed for the Kotlin Multiplatform Mobile (KMM) framework. It provides a simple API for audio playback and supports multiple media formats.'
+    spec.summary                  = 'AstroPlayer is an open-source media player designed for the Kotlin Multiplatform. It provides a simple API for audio playback and supports multiple media formats while also providing an Jetpack Compose UI.'
     spec.vendored_frameworks      = 'build/cocoapods/framework/astroplayer-core.framework'
     spec.libraries                = 'c++'
     spec.ios.deployment_target = '14.1'

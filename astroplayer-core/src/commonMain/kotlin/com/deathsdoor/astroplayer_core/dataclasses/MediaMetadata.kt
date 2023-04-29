@@ -3,9 +3,9 @@ package com.deathsdoor.astroplayer_core.dataclasses
 data class MediaMetadata (
     val trackLength : Long,
     val title: String? = null,
-    val artist: String? = null,
+    val artist: List<String>? = null,
     val albumTitle: String? = null,
-    val albumArtist: String? = null,
+    val albumArtist: List<String>? = null,
     val albumArtwork : String? = null,
     val subtitle: String? = null,
     val description: String? = null,
@@ -29,5 +29,5 @@ data class MediaMetadata (
     val mood : String? = null,
     val sprache : String? = null,
     val lyrics : String? = null,
-    val isLiked : Boolean = false
+    var isLiked : Boolean = false
 )
