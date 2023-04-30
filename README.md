@@ -6,8 +6,27 @@ AstroPlayer is an open-source media player designed for the Kotlin Multiplatform
 # Usage
 To use the library, add the following dependency to your app's `build.gradle` file:
 
+## **For Astroplayer-Core module**
+
+The astroplayer-core module is the core library for the AstroPlayer media player. It provides the essential components for playing media, such as the AstroPlayer class and the MediaItem class.
+
 ```kotlin
-  implementation("com.github.Deaths-Door:AstroPlayer:0.1.0")
+    implementation("com.github.Deaths-Door:AstroPlayer-core:0.1.0")
+    implementation("com.github.Deaths-Door:AstroPlayer-core-ios:0.1.0")
+    implementation("com.github.Deaths-Door:AstroPlayer-core-js:0.1.0")
+    implementation("com.github.Deaths-Door:AstroPlayer-core-android:0.1.0")
+    implementation("com.github.Deaths-Door:AstroPlayer-core-desktop:0.1.0")
+```
+
+## **For Astroplayer-UI module**
+
+The astroplayer-ui module is a UI library for the AstroPlayer media player. It provides a set of UI components that can be used to create a customized media player interface. The UI components are designed to be highly customizable and can be adapted to fit a wide range of design requirements.
+```kotlin
+    implementation("com.github.Deaths-Door:AstroPlayer-ui:0.1.0")
+    implementation("com.github.Deaths-Door:AstroPlayer-ui-ios:0.1.0")
+    implementation("com.github.Deaths-Door:AstroPlayer-ui-js:0.1.0")
+    implementation("com.github.Deaths-Door:AstroPlayer-ui-android:0.1.0")
+    implementation("com.github.Deaths-Door:AstroPlayer-ui-desktop:0.1.0")
 ```
 
 # Methods
@@ -59,6 +78,8 @@ An enumeration class representing the repeat modes for the AstroPlayer:
 - `removeAt(index:Int)` : Removes a media item at the specified index from the media items list in the `AstroPlayer` instance.
 -  `rearrange(from:Int, to:Int)` : Rearranges media items in the media items list by swapping the items at the specified indices in the `AstroPlayer` instance.
 
+
+# User Interface
 
 # Contribution
  Any contributions, whether they are large or small, are greatly appreciated. This can include major features, bug fixes, additional language translations, recommendations, or unit/integration tests.
