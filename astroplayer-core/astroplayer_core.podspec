@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'astroplayer_core'
-    spec.version                  = '0.1.0'
+    spec.version                  = '0.1.1'
     spec.homepage                 = 'https://www.google.com'
     spec.source                   = { :http=> ''}
     spec.authors                  = ''

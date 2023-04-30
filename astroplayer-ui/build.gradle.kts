@@ -3,13 +3,15 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
+    id("maven-publish")
 }
 
-object MetaData {
+object Metadata {
     const val module = "astroplayer-ui"
-    const val version = "0.1.0"
+    const val version = "0.1.1"
     const val namespace = "com.deathsdoor.astroplayer"
     const val description = "AstroPlayer is an open-source media player designed for the Kotlin Multiplatform. It provides a simple API for audio playback and supports multiple media formats while also providing an Jetpack Compose UI."
+    const val repositoryURL = "https://github.com/Deaths-Door/AstroPlayer"
 }
 
 android {
@@ -24,7 +26,9 @@ android {
 }
 
 kotlin {
-    android()
+    android {
+        publishLibraryVariants("release")
+    }
 
     jvm("desktop")
 
@@ -36,12 +40,12 @@ kotlin {
     ios()
 
     cocoapods {
-        summary = MetaData.description
-        homepage = "https://www.google.com"
-        version = "1.0"
+        summary = Metadata.description
+        homepage = Metadata.repositoryURL
+        version = Metadata.version
         ios.deploymentTarget = "14.1"
         framework {
-            baseName = MetaData.module
+            baseName = Metadata.module
         }
     }
 

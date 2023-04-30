@@ -5,40 +5,16 @@ plugins {
     id("maven-publish")
 }
 
-publishing {
-    repositories {
-        maven {
-            name = "AstroPlayer"
-            url = uri("https://maven.pkg.github.com/Deaths-Door/AstroPlayer")
-        }
-    }
-
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "com.deathsdoor.astroplayer"
-            artifactId = "astroplayer-core"
-            version = "1.0.0"
-            from(components["android"])
-            from(components["desktop"])
-            from(components["js"])
-            from(components["ios"])
-            pom {
-                // configure the pom file
-            }
-        }
-    }
-}
-
-@Deprecated("")
-object MetaData {
+object Metadata {
     const val module = "astroplayer-core"
-    const val version = "0.1.0"
+    const val version = "0.1.1"
     const val namespace = "com.deathsdoor.astroplayer"
     const val description = "AstroPlayer is an open-source media player designed for the Kotlin Multiplatform. It provides a simple API for audio playback and supports multiple media formats while also providing an Jetpack Compose UI."
+    const val repositoryURL = "https://github.com/Deaths-Door/AstroPlayer"
 }
 
 android {
-    namespace = "com.deathsdoor.astroplayer"
+    namespace = Metadata.namespace
     compileSdk = 33
 
     defaultConfig.minSdk = 21
@@ -49,7 +25,9 @@ android {
 }
 
 kotlin {
-    android()
+    android {
+        publishLibraryVariants("release")
+    }
 
     jvm("desktop")
 
@@ -61,12 +39,12 @@ kotlin {
     ios()
 
     cocoapods {
-        summary = MetaData.description
-        homepage = "https://www.google.com"
-        version = MetaData.version
+        summary = Metadata.description
+        homepage = Metadata.repositoryURL
+        version = Metadata.version
         ios.deploymentTarget = "14.1"
         framework {
-            baseName = MetaData.module
+            baseName = Metadata.module
         }
     }
 
@@ -75,18 +53,14 @@ kotlin {
         val commonTest by getting
 
         val androidMain by getting {
-            dependsOn(commonMain)
             dependencies {
                 implementation("androidx.media3:media3-exoplayer:1.0.1")
             }
         }
 
-        val iosMain by getting {
-            dependsOn(commonMain)
-        }
+        val iosMain by getting
 
         val desktopMain by getting {
-            dependsOn(commonMain)
             dependencies {
                 implementation("uk.co.caprica:vlcj:4.8.2")
             }
@@ -94,7 +68,6 @@ kotlin {
         val desktopTest by getting
 
         val jsMain by getting {
-            dependsOn(commonMain)
             dependencies {
                 implementation(npm("mediaelement", "4.2.16"))
             }
