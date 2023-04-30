@@ -5,6 +5,30 @@ plugins {
     id("maven-publish")
 }
 
+publishing {
+    repositories {
+        maven {
+            name = "AstroPlayer"
+            url = uri("https://maven.pkg.github.com/Deaths-Door/AstroPlayer")
+        }
+    }
+
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.deathsdoor.astroplayer"
+            artifactId = "astroplayer-core"
+            version = "1.0.0"
+            from(components["android"])
+            from(components["desktop"])
+            from(components["js"])
+            from(components["ios"])
+            pom {
+                // configure the pom file
+            }
+        }
+    }
+}
+
 @Deprecated("")
 object MetaData {
     const val module = "astroplayer-core"
