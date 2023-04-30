@@ -44,6 +44,17 @@ An enumeration class representing the repeat modes for the AstroPlayer:
 - `Group` : Repeat mode for a specific range of media items.
 - `Shuffle` : Shuffle mode where media items are played in random order.
 
+## Intefaces 
+
+### MediaEventListener 
+
+- `onSeekForward()` : Called when the user seeks forward in the current media item.
+- `onSeekBackward()` : Called when the user seeks backward in the current media item.
+- `onSeekToNextMediaItem()` : Called when the user skips to the next media item in the playlist.
+- `onSeekToPreviousMediaItem()` : Called when the user skips to the previous media item in the playlist.
+- `onPlaybackPlayed()` : Called when the media playback starts playing.
+- `onPlaybackPaused()` : Called when the media playback is paused.
+
 ## Public Properties:
 
 - `mediaItems` : A mutable list of `MediaItem` objects that represent the audio files to be played.
@@ -59,7 +70,8 @@ An enumeration class representing the repeat modes for the AstroPlayer:
 - `currentMediaItem` : Current media item being played by the player.
 - `currentMediaItemMetadata` : Metadata of the current media item being played by the player.
 - `currentMediaItemTrackLength` : Length of the current media item's track in milliseconds.
-- 
+- `mediaEventListener` : Callback functions that can be implemented by a client app to handle media playback events.
+
 ## Public Functions:
 - `play()` : Starts playing the audio player.
 - `pause()` : Pauses the audio player.
