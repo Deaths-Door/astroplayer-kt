@@ -1,6 +1,6 @@
-package com.deathsdoor.astroplayer_core.platfromCommonFunctions
+package com.deathsdoor.astroplayer.platfromCommonFunctions
 
-import com.deathsdoor.astroplayer_core.AstroPlayer
+import com.deathsdoor.astroplayer.AstroPlayer
 
 
 fun AstroPlayer.mute(){

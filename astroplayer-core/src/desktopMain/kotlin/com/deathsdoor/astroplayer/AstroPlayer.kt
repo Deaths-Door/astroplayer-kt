@@ -1,57 +1,52 @@
-package com.deathsdoor.astroplayer_core
+package com.deathsdoor.astroplayer
 
-import com.deathsdoor.astroplayer_core.dataclasses.MediaItem
-import com.deathsdoor.astroplayer_core.enums.RepeatMode
-import com.deathsdoor.astroplayer_core.equalizer.EqualizerValues
+import com.deathsdoor.astroplayer.dataclasses.MediaItem
+import com.deathsdoor.astroplayer.enums.RepeatMode
+import com.deathsdoor.astroplayer.equalizer.EqualizerValues
+import javafx.scene.media.Media
+import javafx.scene.media.MediaPlayer
+import javafx.util.Duration.*
+import java.time.Duration
 
 //TODO add unified builder
 //TODO add event listeners
 /* changed to next/ previous media item ,onPaused / onPlayed/ onFastForward / onFastBackwards like that */
+@Suppress("UNUSED")
 actual class AstroPlayer private actual constructor() {
-    internal actual val mediaItems: MutableList<MediaItem>
-        get() = TODO("Not yet implemented")
+    private var mediaPlayer: MediaPlayer = MediaPlayer(Media(""))
 
+    internal actual val mediaItems: MutableList<MediaItem> = mutableListOf()
     /**
      * Playback
      * */
-    actual fun play() {
-    }
+    actual fun play() = mediaPlayer.play()
+    actual fun pause() = mediaPlayer.pause()
+    actual fun stop() = mediaPlayer.stop()
 
-    actual fun pause() {
-    }
-
-    actual fun stop() {
-    }
-
-    actual val isPlaying: Boolean
-        get() = TODO("Not yet implemented")
-    actual val isPaused: Boolean
-        get() = TODO("Not yet implemented")
-    actual var playBackSpeed: Float
-        get() = TODO("Not yet implemented")
-        set(value) {}
+    actual val isPlaying: Boolean get() = mediaPlayer.status == MediaPlayer.Status.PLAYING
+    actual val isPaused: Boolean get() = mediaPlayer.status == MediaPlayer.Status.PAUSED
+    actual var playBackSpeed : Float
+        get() = mediaPlayer.rate.toFloat()
+        set(value) {
+            mediaPlayer.rate = value.toDouble()
+        }
 
     /**
      * Volume
      * */
-    internal actual var previousUnMutedVolume: Float
-        get() = TODO("Not yet implemented")
-        set(value) {}
+    internal actual var previousUnMutedVolume: Float = 0f
     actual var volume: Float
-        get() = TODO("Not yet implemented")
-        set(value) {}
+        get() = mediaPlayer.volume.toFloat()
+        set(value) {
+            mediaPlayer.volume = value.toDouble()
+        }
 
     /**
      * Seeking
      * **/
-    actual fun seekTo(milliseconds: Long) {
-    }
-
-    actual fun seekToNextMediaItem() {
-    }
-
-    actual fun seekToPreviousMediaItem() {
-    }
+    actual fun seekTo(milliseconds: Long) = mediaPlayer.seek(millis(milliseconds.toDouble()))
+    actual fun seekToNextMediaItem() = Unit
+    actual fun seekToPreviousMediaItem() = Unit
 
     /**
      *  MediaItem
@@ -60,7 +55,6 @@ actual class AstroPlayer private actual constructor() {
         get() = TODO("Not yet implemented")
     actual val currentMediaItemPosition: Long
         get() = TODO("Not yet implemented")
-
     internal actual fun updatePlayerAfterClear() {
     }
 
@@ -123,9 +117,13 @@ actual class AstroPlayer private actual constructor() {
     /**
      * PlayBackListener
      * */
-    @ExperimentalMultiplatform
-    actual var mediaEventListener: MediaEventListener?
-        get() = TODO("Not yet implemented")
-        set(value) {}
 
+    //TODO add all mediaeventlisteners
+    @ExperimentalMultiplatform
+    actual var mediaEventListener: MediaEventListener? = null
+        set(value) {
+            field = value
+            mediaPlayer.onPlaying = Runnable { value?.onPlaybackPlayed() }
+            mediaPlayer.onPaused = Runnable { value?.onPlaybackPaused() }
+        }
 }

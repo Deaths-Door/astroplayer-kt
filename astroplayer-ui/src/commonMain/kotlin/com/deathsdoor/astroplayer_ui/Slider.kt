@@ -6,8 +6,8 @@ import androidx.compose.material3.SliderDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.deathsdoor.astroplayer_core.AstroPlayer
-import com.deathsdoor.astroplayer_core.platfromCommonFunctions.currentMediaItemTrackLength
+import com.deathsdoor.astroplayer.AstroPlayer
+import com.deathsdoor.astroplayer.platfromCommonFunctions.currentMediaItemTrackLength
 
 @Composable
 fun AstroPlayer.TrackDurationSlider(

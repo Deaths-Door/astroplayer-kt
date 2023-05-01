@@ -1,4 +1,4 @@
-package com.deathsdoor.astroplayer_core.equalizer
+package com.deathsdoor.astroplayer.equalizer
 
 /*
 * TODO add
@@ -23,8 +23,8 @@ interface EqualizerValues {
     var hz14000 : Float
     companion object {
         fun createEqualizerValues(
-            hz60 : Float = Equalizer.Default.hz60,hz230 : Float = Equalizer.Default.hz230,
-            hz910 : Float = Equalizer.Default.hz910,hz3600 : Float = Equalizer.Default.hz3600,
+            hz60 : Float = Equalizer.Default.hz60, hz230 : Float = Equalizer.Default.hz230,
+            hz910 : Float = Equalizer.Default.hz910, hz3600 : Float = Equalizer.Default.hz3600,
             hz14000 : Float = Equalizer.Default.hz14000
         ): EqualizerValues = object : EqualizerValues {
             override var hz60: Float = hz60

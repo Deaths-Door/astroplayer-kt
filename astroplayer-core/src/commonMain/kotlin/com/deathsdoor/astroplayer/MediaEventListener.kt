@@ -1,4 +1,4 @@
-package com.deathsdoor.astroplayer_core
+package com.deathsdoor.astroplayer
 
 @ExperimentalMultiplatform
 interface MediaEventListener {

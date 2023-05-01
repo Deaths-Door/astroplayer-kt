@@ -1,8 +1,8 @@
-package com.deathsdoor.astroplayer_core.platfromCommonFunctions
+package com.deathsdoor.astroplayer.platfromCommonFunctions
 
-import com.deathsdoor.astroplayer_core.AstroPlayer
-import com.deathsdoor.astroplayer_core.dataclasses.MediaItem
-import com.deathsdoor.astroplayer_core.dataclasses.MediaMetadata
+import com.deathsdoor.astroplayer.AstroPlayer
+import com.deathsdoor.astroplayer.dataclasses.MediaItem
+import com.deathsdoor.astroplayer.dataclasses.MediaMetadata
 
 val AstroPlayer.mediaItemsLength: Int get() = mediaItems.size
 val AstroPlayer.currentMediaItem : MediaItem get() = mediaItems[currentMediaItemIndex]

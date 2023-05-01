@@ -8,9 +8,9 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
-import com.deathsdoor.astroplayer_core.AstroPlayer
-import com.deathsdoor.astroplayer_core.platfromCommonFunctions.currentMediaItem
-import com.deathsdoor.astroplayer_core.platfromCommonFunctions.currentMediaItemTrackLength
+import com.deathsdoor.astroplayer.AstroPlayer
+import com.deathsdoor.astroplayer.platfromCommonFunctions.currentMediaItem
+import com.deathsdoor.astroplayer.platfromCommonFunctions.currentMediaItemTrackLength
 
 private val Long.formatToTime : String get() {
     val seconds = this / 1000

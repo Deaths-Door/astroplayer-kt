@@ -1,14 +1,14 @@
-package com.deathsdoor.astroplayer_core
+package com.deathsdoor.astroplayer
 
 import android.content.Context
 import android.media.browse.MediaBrowser
 import android.net.Uri
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
-import com.deathsdoor.astroplayer_core.dataclasses.MediaItem
-import com.deathsdoor.astroplayer_core.enums.RepeatMode
-import com.deathsdoor.astroplayer_core.equalizer.Equalizer
-import com.deathsdoor.astroplayer_core.equalizer.EqualizerValues
+import com.deathsdoor.astroplayer.dataclasses.MediaItem
+import com.deathsdoor.astroplayer.enums.RepeatMode
+import com.deathsdoor.astroplayer.equalizer.Equalizer
+import com.deathsdoor.astroplayer.equalizer.EqualizerValues
 import android.media.audiofx.Equalizer as ExoplayerEqualizer
 import androidx.media3.common.MediaItem as ExoplayerMediaItem
 

@@ -14,10 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.deathsdoor.astroplayer_core.AstroPlayer
-import com.deathsdoor.astroplayer_core.platfromCommonFunctions.currentMediaItem
-import com.deathsdoor.astroplayer_core.platfromCommonFunctions.hasNextMediaItem
-import com.deathsdoor.astroplayer_core.platfromCommonFunctions.hasPreviousMediaItem
+import com.deathsdoor.astroplayer.AstroPlayer
+import com.deathsdoor.astroplayer.platfromCommonFunctions.currentMediaItem
+import com.deathsdoor.astroplayer.platfromCommonFunctions.hasNextMediaItem
+import com.deathsdoor.astroplayer.platfromCommonFunctions.hasPreviousMediaItem
 
 //TODO add custom image vectors
 @Composable

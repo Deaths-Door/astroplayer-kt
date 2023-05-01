@@ -1,10 +1,10 @@
-package com.deathsdoor.astroplayer_core.equalizer
+package com.deathsdoor.astroplayer.equalizer
 
 @ExperimentalMultiplatform
 @Suppress("UNUSED")
 object Equalizer {
     //TODO add values for presets
-    val Default = EqualizerValues.createEqualizerValues(0f,0f,0f,0f,0f)
+    val Default = EqualizerValues.createEqualizerValues(0f, 0f, 0f, 0f, 0f)
     val HipHop = EqualizerValues.createEqualizerValues()
     val Rock = EqualizerValues.createEqualizerValues()
     val Dance = EqualizerValues.createEqualizerValues()

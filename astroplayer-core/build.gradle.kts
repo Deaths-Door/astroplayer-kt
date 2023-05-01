@@ -62,7 +62,9 @@ kotlin {
 
         val desktopMain by getting {
             dependencies {
-                implementation("uk.co.caprica:vlcj:4.8.2")
+                listOf("media","base").forEach {
+                    implementation(files("libs/javafx-$it-20-win.jar"))
+                }
             }
         }
         val desktopTest by getting

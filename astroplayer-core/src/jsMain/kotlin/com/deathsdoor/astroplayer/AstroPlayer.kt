@@ -1,10 +1,10 @@
-package com.deathsdoor.astroplayer_core
+package com.deathsdoor.astroplayer
 
-import com.deathsdoor.astroplayer_core.dataclasses.MediaItem
-import com.deathsdoor.astroplayer_core.enums.RepeatMode
-import com.deathsdoor.astroplayer_core.equalizer.Equalizer
-import com.deathsdoor.astroplayer_core.equalizer.EqualizerValues
-import com.deathsdoor.astroplayer_core.platfromCommonFunctions.currentMediaItem
+import com.deathsdoor.astroplayer.dataclasses.MediaItem
+import com.deathsdoor.astroplayer.enums.RepeatMode
+import com.deathsdoor.astroplayer.equalizer.Equalizer
+import com.deathsdoor.astroplayer.equalizer.EqualizerValues
+import com.deathsdoor.astroplayer.platfromCommonFunctions.currentMediaItem
 
 @Suppress("UNUSED")
 actual class AstroPlayer private actual constructor() {

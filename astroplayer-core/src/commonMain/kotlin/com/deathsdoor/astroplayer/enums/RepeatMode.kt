@@ -1,4 +1,4 @@
-package com.deathsdoor.astroplayer_core.enums
+package com.deathsdoor.astroplayer.enums
 
 enum class RepeatMode{
     Auf,

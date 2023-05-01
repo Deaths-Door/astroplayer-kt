@@ -1,4 +1,4 @@
-package com.deathsdoor.astroplayer_core.dataclasses
+package com.deathsdoor.astroplayer.dataclasses
 
 data class MediaItem(
     val mediaID : String,
