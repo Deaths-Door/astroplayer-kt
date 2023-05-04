@@ -27,9 +27,20 @@ android {
 kotlin {
     android {
         publishLibraryVariants("release")
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "11"
+            }
+        }
     }
 
-    jvm("desktop")
+    jvm("desktop"){
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "11"
+            }
+        }
+    }
 
     js(IR){
         browser()
