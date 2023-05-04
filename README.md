@@ -1,9 +1,7 @@
 # AstroPlayer
 AstroPlayer is an open-source media player designed for the Kotlin Multiplatform Mobile (KMM) framework. It provides a simple API for audio playback and supports multiple media formats.
 
-**Note :**  The AstroPlayer library is currently under development, and as such, some parts of the library may not work as expected. The Android platform is the only one that has been tested, while the Javascript platform is untested. The Desktop and iOS platforms are not yet supported. Additionally, not all of the methods listed in the code may be available, as they are still being worked on. Certain functions may also not work as expected due to the ongoing development process.
-
-**Note :** Desktop will come out soon and IOS implementation has began
+**Note :**  The AstroPlayer library is currently under development, and as such, some parts of the library may not work as expected. The Android platform is the only one that has been tested, while the Javascript and Desktop (JVM) platform is untested. The iOS platforms implementation has began but not finished or useable at all. Additionally, not all of the methods listed in the code may be available, as they are still being worked on. Certain functions may also not work as expected due to the ongoing development process.
 
 # Usage
 To use the library, add the following dependency to your app's `build.gradle` file:
@@ -96,11 +94,6 @@ An enumeration class representing the repeat modes for the AstroPlayer:
 # User Interface
 
 # Contribution
- Any contributions, whether they are large or small, are greatly appreciated. This can include major features, bug fixes, additional language translations, recommendations, or unit/integration tests.
-To contribute, please follow these steps:
--Fork the repository and create your own branch for your changes.
-- Make your changes and ensure that they are thoroughly tested.
-- Submit a pull request with a detailed description of your changes and the problem it solves.
-- All contributions will be thoroughly reviewed and discussed before being merged. Please ensure that your contributions align with the project's goals and coding standards.
+We welcome feedback and contributions from the community. If you encounter any issues while using this library or have any ideas for future features or improvements, please let us know by creating a new issue in the GitHub repository. 
 
-Thank you for contributing to this project!
+Thank you for contributing / giving feedback to this project!
