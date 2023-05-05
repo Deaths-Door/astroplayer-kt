@@ -8,7 +8,7 @@ plugins {
 
 object Metadata {
     const val module = "astroplayer-ui"
-    const val version = "0.1.1"
+    const val version = "0.1.2"
     const val namespace = "com.deathsdoor.astroplayer"
     const val description = "AstroPlayer is an open-source media player designed for the Kotlin Multiplatform. It provides a simple API for audio playback and supports multiple media formats while also providing an Jetpack Compose UI."
     const val repositoryURL = "https://github.com/Deaths-Door/AstroPlayer"
