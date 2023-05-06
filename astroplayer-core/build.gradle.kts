@@ -20,8 +20,8 @@ android {
     defaultConfig.minSdk = 21
     defaultConfig.targetSdk = 33
 
-    compileOptions.sourceCompatibility = JavaVersion.VERSION_11
-    compileOptions.targetCompatibility = JavaVersion.VERSION_11
+    compileOptions.sourceCompatibility = JavaVersion.VERSION_1_8
+    compileOptions.targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 kotlin {
@@ -29,7 +29,7 @@ kotlin {
         publishLibraryVariants("release")
         compilations.all {
             kotlinOptions {
-                jvmTarget = "11"
+                jvmTarget = "1.8"
             }
         }
     }
@@ -37,7 +37,7 @@ kotlin {
     jvm("desktop"){
         compilations.all {
             kotlinOptions {
-                jvmTarget = "11"
+                jvmTarget = "1.8"
             }
         }
     }
