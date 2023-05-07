@@ -1,15 +1,10 @@
 package com.deathsdoor.astroplayer.dataclasses
 
-//TODO update both classes correctly
+import com.deathsdoor.astroplayer.enums.MediaSource
+
 data class MediaItem(
     val mediaID : String,
     val mediaSource : String,
-    val sourceType : MediaSource,
+    val sourceType : MediaSource = MediaSource.Network,
     val metadata : MediaMetadata
-){
-    enum class MediaSource{
-        File,
-        Url,
-        Unknown
-    }
-}
+)

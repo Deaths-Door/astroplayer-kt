@@ -12,15 +12,14 @@ object Metadata {
     const val namespace = "com.deathsdoor.astroplayer"
     const val module = "astroplayer-core"
     const val version = "1.2.0"
-    const val description = ""
-    const val inceptionYear = "2023"
+    const val description = "AstroPlayer is an open-source media player designed for the Kotlin Multiplatform. It provides a simple API for audio playback and supports multiple media formats while also providing an Jetpack Compose UI."
     const val url = "https://github.com/Deaths-Door/AstroPlayer"
+
     object License {
         const val name = "The Apache License, Version 2.0"
         const val url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
         const val distribution = "http://www.apache.org/licenses/LICENSE-2.0.txt"
     }
-    //const val
 }
 
 mavenPublishing {
@@ -78,7 +77,11 @@ kotlin {
     sourceSets {
         val commonMain by getting
 
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation("androidx.media3:media3-exoplayer:1.0.1")
+            }
+        }
 
         val iosX64Main by getting
         val iosArm64Main by getting
@@ -90,9 +93,19 @@ kotlin {
             iosSimulatorArm64Main.dependsOn(this)
         }
 
-        val desktopMain by getting
+        val desktopMain by getting {
+            dependencies {
+                listOf("media","base").forEach {
+                    implementation(files("libs/javafx-$it-20-win.jar"))
+                }
+            }
+        }
 
-        val jsMain by getting
+        val jsMain by getting {
+            dependencies {
+                implementation(npm("mediaelement", "4.2.16"))
+            }
+        }
     }
 }
 
