@@ -2,24 +2,45 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
-   // id("maven-publish")
     id("com.vanniktech.maven.publish") version "0.25.2"
 }
 
 object Metadata {
     const val javaVersion = "11"
+    const val iosDeploymentTarget = "14.1"
+
     const val namespace = "com.deathsdoor.astroplayer"
     const val module = "astroplayer-core"
+    const val version = "1.2.0"
+    const val description = ""
+    const val inceptionYear = "2023"
+    const val url = "https://github.com/Deaths-Door/AstroPlayer"
+    object License {
+        const val name = "The Apache License, Version 2.0"
+        const val url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        const val distribution = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+    }
+    //const val
 }
 
 mavenPublishing {
     publishToMavenCentral()
     signAllPublications()
+    coordinates(Metadata.namespace,Metadata.module,Metadata.version)
+    pom{
+        name.set(rootProject.name)
+        licenses{
+            license {
+                name.set(Metadata.License.name)
+                url.set(Metadata.License.url)
+                distribution.set(Metadata.License.distribution)
+            }
+        }
+    }
 }
 
 kotlin {
     android {
-        publishLibraryVariants("release")
         compilations.all {
             kotlinOptions {
                 jvmTarget = Metadata.javaVersion
@@ -45,12 +66,12 @@ kotlin {
     iosSimulatorArm64()
 
     cocoapods {
-        summary = "Some description for the Shared Module"
-        homepage = "Link to the Shared Module homepage"
-        version = "1.0"
-        ios.deploymentTarget = "14.1"
+        summary = Metadata.description
+        homepage = Metadata.url
+        version = Metadata.version
+        ios.deploymentTarget = Metadata.iosDeploymentTarget
         framework {
-            baseName = "astroplayer-core"
+            baseName = Metadata.module
         }
     }
     

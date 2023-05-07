@@ -1,4 +1,6 @@
 package com.deathsdoor.astroplayer.dataclasses
+
+//TODO update both classes correctly
 data class MediaItem(
     val mediaID : String,
     val mediaSource : String,
