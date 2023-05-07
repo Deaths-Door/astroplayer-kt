@@ -1,5 +1,5 @@
 package com.deathsdoor.astroplayer
 
-class AstroPlayer constructor() {
-
+class AstroPlayer
+{
 }
