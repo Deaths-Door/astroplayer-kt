@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'astroplayer_ui'
-    spec.version                  = '0.1.2'
+    spec.version                  = '1.2.0'
     spec.homepage                 = 'https://github.com/Deaths-Door/AstroPlayer'
     spec.source                   = { :http=> ''}
     spec.authors                  = ''

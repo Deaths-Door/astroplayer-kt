@@ -17,3 +17,4 @@ rootProject.name = "Astroplayer"
 
 include("app")
 include(":astroplayer-core")
+include(":astroplayer-ui")
