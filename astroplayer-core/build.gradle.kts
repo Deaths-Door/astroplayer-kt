@@ -6,11 +6,13 @@ plugins {
 }
 
 object Metadata {
-    val javaVersion = "11"
+    const val javaVersion = "11"
+    const val namespace = "com.deathsdoor.astroplayer"
 }
 
 kotlin {
     android {
+        publishLibraryVariants("release")
         compilations.all {
             kotlinOptions {
                 jvmTarget = Metadata.javaVersion
@@ -67,13 +69,13 @@ kotlin {
 }
 
 android {
-    namespace = "com.deathsdoor.astroplayer"
+    namespace = Metadata.namespace
     compileSdk = 33
 
     defaultConfig.minSdk = 21
     defaultConfig.targetSdk = 33
 
-    val java =  JavaVersion.values().find { it.name.endsWith(Metadata.javaVersion) }
+    val java = JavaVersion.values().find { it.name.endsWith(Metadata.javaVersion) }
 
     compileOptions.sourceCompatibility = java
     compileOptions.targetCompatibility = java
