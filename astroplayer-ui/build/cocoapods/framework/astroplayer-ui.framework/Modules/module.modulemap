@@ -1,6 +1,0 @@
-framework module astroplayer-ui {
-  umbrella header "placeholder.h"
-
-  export *
-  module * { export * }
-}

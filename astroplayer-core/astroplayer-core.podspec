@@ -1,29 +1,33 @@
 Pod::Spec.new do |spec|
-    spec.name                     = 'astroplayer_core'
+    spec.name                     = 'astroplayer-core'
     spec.version                  = '1.0'
     spec.homepage                 = 'Link to the Shared Module homepage'
-    spec.source                   = { :http=> ''}
+    spec.source                   = { :git => "Not Published", :tag => "Cocoapods/#{spec.name}/#{spec.version}" }
     spec.authors                  = ''
     spec.license                  = ''
     spec.summary                  = 'Some description for the Shared Module'
-    spec.vendored_frameworks      = 'build/cocoapods/framework/astroplayer-core.framework'
-    spec.libraries                = 'c++'
+
+    spec.vendored_frameworks      = "build/cocoapods/framework/astroplayer-core.framework"
+    spec.libraries                = "c++"
+    spec.module_name              = "#{spec.name}_umbrella"
+
     spec.ios.deployment_target = '14.1'
+
                 
-                
+
     spec.pod_target_xcconfig = {
         'KOTLIN_PROJECT_PATH' => ':astroplayer-core',
         'PRODUCT_MODULE_NAME' => 'astroplayer-core',
     }
-                
+
     spec.script_phases = [
         {
-            :name => 'Build astroplayer_core',
+            :name => 'Build astroplayer-core',
             :execution_position => :before_compile,
             :shell_path => '/bin/sh',
             :script => <<-SCRIPT
-                if [ "YES" = "$OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED" ]; then
-                  echo "Skipping Gradle build task invocation due to OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED environment variable set to \"YES\""
+                if [ "YES" = "$COCOAPODS_SKIP_KOTLIN_BUILD" ]; then
+                  echo "Skipping Gradle build task invocation due to COCOAPODS_SKIP_KOTLIN_BUILD environment variable set to \"YES\""
                   exit 0
                 fi
                 set -ev
@@ -31,9 +35,8 @@ Pod::Spec.new do |spec|
                 "$REPO_ROOT/../gradlew" -p "$REPO_ROOT" $KOTLIN_PROJECT_PATH:syncFramework \
                     -Pkotlin.native.cocoapods.platform=$PLATFORM_NAME \
                     -Pkotlin.native.cocoapods.archs="$ARCHS" \
-                    -Pkotlin.native.cocoapods.configuration="$CONFIGURATION"
+                    -Pkotlin.native.cocoapods.configuration=$CONFIGURATION
             SCRIPT
         }
     ]
-                
 end
