@@ -14,4 +14,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Astroplayer"
+
+include("app")
 include(":astroplayer-core")
