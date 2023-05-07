@@ -2,12 +2,19 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
-    id("maven-publish")
+   // id("maven-publish")
+    id("com.vanniktech.maven.publish") version "0.25.2"
 }
 
 object Metadata {
     const val javaVersion = "11"
     const val namespace = "com.deathsdoor.astroplayer"
+    const val module = "astroplayer-core"
+}
+
+mavenPublishing {
+    publishToMavenCentral()
+    signAllPublications()
 }
 
 kotlin {
