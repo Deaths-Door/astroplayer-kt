@@ -1,22 +1,40 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop.
+# AstroPlayer
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+AstroPlayer is an open-source media player designed for the Kotlin Multiplatform. It provides a simple API for audio playback, supports multiple media formats, and offers a Jetpack Compose UI.
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+**Key Features:**
 
+- **Multiplatform Support** : Play audio across Android, Java (Desktop), iOS, and WebAssembly using platform-specific backends (Media3 for Android, VLCJ for Java, AVPlayer for iOS, and Holwer.js for WebAssembly).
+- **Simple API** : Focus on easy-to-use APIs for managing playback.
+- **Jetpack Compose UI** : Build beautiful and responsive user interfaces with Jetpack Compose.
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
-[Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
-[Kotlin/Wasm](https://kotl.in/wasm/)…
+**Packages:**
 
-**Note:** Compose/Web is Experimental and may be changed at any time. Use it only for evaluation purposes.
-We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
-If you face any issues, please report them on [GitHub](https://github.com/JetBrains/compose-multiplatform/issues).
+- `astroplayer-core`: Contains the core player logic.
+- `astroplayer-ui`: Provides the Jetpack Compose UI components for playback control.
 
-You can open the web application by running the `:composeApp:wasmJsBrowserDevelopmentRun` Gradle task.
+**Documentation:**
+
+Detailed documentation can be found at https://www.here.com/docs/.
+
+**Installation:**
+
+AstroPlayer is published to Maven Central. To add it to your project, include the following dependencies in your `build.gradle` file:
+
+```kotlin
+sourceSets {
+    commonMain.dependencies  {
+        // TODO : Replace this with cords 
+      implementation("com.example.astroplayer:astroplayer-core:VERSION")
+      implementation("com.example.astroplayer:astroplayer-ui:VERSION")
+    }
+}
+```
+
+## Contributing:
+
+Contributions are welcome! If you find any issues or have suggestions for improvement, please open an issue or submit a pull request.
+
+## License
+
+AstroPlayer is licensed under the Apache License 2.0. See the LICENSE file for details.

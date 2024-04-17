@@ -21,10 +21,12 @@ external class Howl constructor(properties: HowlerProperties) : HowlerProperties
     var seek : JsNumber
     @JsName("playing")
     fun isAnyAudioPlaying() : Boolean
-    fun duration()
+    fun duration() : JsNumber
 
     // unloaded / loading / loaded
     fun state() : JsString
 
+    fun unload()
 
+    fun on(event: String, function: (id: JsString) -> Unit)
 }

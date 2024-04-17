@@ -29,8 +29,6 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
      */
     actual open fun release() = nativeMediaPlayer.release()
 
-    private val nativeCurrentMediaItemIndex = 0
-    private val astroMediaItems = mutableListOf<AstroMediaItem>()
     /**
      * Starts playback of the current media item.
      */
@@ -69,16 +67,45 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
     /**
      * The current repeat mode of the player.
      */
-    actual open var repeatMode: RepeatMode
-        get() = TODO("Not yet implemented")
-        set(value) {}
+    actual open var repeatMode: RepeatMode = RepeatMode.Off
+        set(value) {
+            field = value
+
+            // Set loop true in case this was disabled
+            if(repeatMode == RepeatMode.One) nativeMediaPlayer.loop = true
+        }
+
+    init {
+        fun seekToNextOrRandomMediaItem() = if(shuffleModeEnabled)
+                (0 until astroMediaItems.size)
+                    .randomOrNull()
+                    ?.let { seekToMediaItem(it) }
+        else seekToNextMediaItem()
+
+        when(repeatMode) {
+            // Enabling looping
+            RepeatMode.One -> nativeMediaPlayer.loop = true
+
+            // TODO: Remove these listeners when repeatMode changes
+            // Just Seek to Next MediaItem
+            RepeatMode.Off -> nativeMediaPlayer.on("end") {
+                seekToNextOrRandomMediaItem()
+            }
+
+            RepeatMode.All -> nativeMediaPlayer.on("end") {
+                // Just go to the next one
+                if(hasNextMediaItem) seekToNextOrRandomMediaItem()
+
+                // Go to the first one
+                else seekToMediaItem(0)
+            }
+        }
+    }
 
     /**
      * Indicates whether shuffle mode is enabled.
      */
-    actual open var shuffleModeEnabled: Boolean
-        get() = TODO("Not yet implemented")
-        set(value) {}
+    actual open var shuffleModeEnabled: Boolean = false
 
     /**
      * Gets the current volume level of the player. The value ranges from 0.0 (silent) to 1.0 (maximum volume).
@@ -163,11 +190,45 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
      * Selects a media item from the playlist by its index.
      *
      * @param index The index of the media item to play.
+     *
+     *
+     * This function takes an integer `index` as input, which represents the position of the desired media item
+     * within the `astroMediaItems` playlist. It performs the following steps:
+     *
+     * 1. **Safety Check:** The function first verifies if the provided `index` is within the valid range of the playlist.
+     * If the index is greater than the size of the playlist minus one (indicating an out-of-bounds index), the function exits
+     * without making any changes.
+     * 2. **Update Index:** If the index is valid, the `currentMediaItemIndex` property is updated to point to the selected
+     * media item. This essentially sets the current position within the playlist.
+     * 3. **Generate Howl Properties:** Similar to the `nextMediaItem` function, a helper function named
+     * `createHowlProperties` is used. This function takes the source URL of the selected media item (`astroMediaItems[index].source`)
+     * and creates a new `HowlProperties` object. It also copies the current playback settings (volume, html5, loop, etc.)
+     * from the `nativeMediaPlayer` object to ensure consistent playback behavior.
+     * 4. **Create New Howl Instance:** A new `Howl` instance is created using the generated `HowlProperties`. This effectively
+     * replaces the existing player with the selected media item, starting playback from the beginning.
+     *
+     * By following these steps, the `seekToMediaItem` function allows you to navigate the playlist and play any media item
+     * based on its index.
      */
     actual open fun seekToMediaItem(index: Int) {
-        nativeMediaPlayer.sources = JsArray<JsString>().apply {
-            set()
-        }
+        // Just for safety
+        if(index > astroMediaItems.size - 1) return
+
+        // Only update index if we have a next mediaitem
+        nativeCurrentMediaItemIndex = index
+
+        fun createHowlProperties(source : String) : HowlerProperties = js("""
+                            { src :["$source"] , 
+                            volume : ${nativeMediaPlayer.volume}, 
+                            html : ${nativeMediaPlayer.html5}, 
+                            loop : ${nativeMediaPlayer.loop}, 
+                            preload : ${nativeMediaPlayer.preload}, autoplay : ${nativeMediaPlayer.autoplay}, mute : ${nativeMediaPlayer.mute} , rate : ${ nativeMediaPlayer.rate}  }
+                        """)
+
+        // Create new howl for the next media item , now the player is set for the current media item
+        val mediaItem = astroMediaItems[nativeCurrentMediaItemIndex].first.source.toString()
+        val properties = createHowlProperties(mediaItem)
+        nativeMediaPlayer = Howl(properties)
     }
 
     /**
@@ -178,30 +239,33 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
     /**
      * Gets the duration of the current media item in milliseconds.
      */
-    actual open val contentDuration: Long get() = currentPosition
+    actual open val contentDuration: Long get() = nativeMediaPlayer.duration().toDouble().toLong()
 
     /**
      * Gets the currently playing media item, or null if no media item is playing.
      */
     actual open val currentMediaItem: AstroMediaItem?
-        get() = TODO("Not yet implemented")
+        get() = astroMediaItems[currentMediaItemIndex].first
 
     /**
      * Gets the index of the currently playing media item in the playlist, or -1 if no media item is playing.
      */
-    actual open val currentMediaItemIndex: Int
-        get() = TODO("Not yet implemented")
+    actual open val currentMediaItemIndex: Int get() = nativeCurrentMediaItemIndex
 
     /**
      * Gets the total number of media items in the playlist.
      */
-    actual open val mediaItemCount: Int
-        get() = TODO("Not yet implemented")
-
+    actual open val mediaItemCount: Int get() = astroMediaItems.size
     /**
      * Removes all media items from the playlist.
      */
     actual open fun clearMediaItems() {
+        // Destroy all players then clear the list
+        astroMediaItems.forEach {
+            it.second?.unload()
+        }
+
+        astroMediaItems.clear()
     }
 
     /**
@@ -210,6 +274,7 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
      * @param item The media item to add.
      */
     actual open fun addMediaItem(item: AstroMediaItem) {
+        astroMediaItems.add(item to null)
     }
 
     /**
@@ -222,6 +287,7 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
         index: Int,
         item: AstroMediaItem,
     ) {
+        astroMediaItems.add(index,item to null)
     }
 
     /**
@@ -230,6 +296,7 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
      * @param items The list of media items to add.
      */
     actual open fun addMediaItems(items: List<AstroMediaItem>) {
+        astroMediaItems.addAll(items.map { it to null })
     }
 
     /**
@@ -242,6 +309,7 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
         index: Int,
         items: List<AstroMediaItem>,
     ) {
+        astroMediaItems.addAll(index,items.map { it to null })
     }
 
     /**
@@ -251,6 +319,8 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
      * @param newIndex The new index for the media item.
      */
     actual open fun moveMediaItem(currentIndex: Int, newIndex: Int) {
+        val item = astroMediaItems.removeAt(currentIndex)
+        astroMediaItems.add(newIndex,item)
     }
 
     /**
@@ -265,6 +335,16 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
         toIndex: Int,
         newIndex: Int,
     ) {
+        // No need to move as it is same
+        if (fromIndex == newIndex) {
+            return
+        }
+
+        // No Concurrency Modify Error
+        val sublist = astroMediaItems.subList(fromIndex, toIndex).toList()
+
+        astroMediaItems.removeAll(sublist)
+        astroMediaItems.addAll(newIndex,sublist)
     }
 
     /**
@@ -273,6 +353,7 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
      * @param index The index of the media item to remove.
      */
     actual open fun removeMediaItem(index: Int) {
+        astroMediaItems.removeAt(index).second?.unload()
     }
 
     /**
@@ -282,6 +363,10 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
      * @param toIndex The ending index of the media items to remove (exclusive).
      */
     actual open fun removeMediaItems(fromIndex: Int, toIndex: Int) {
+        // No removeRange for KMP
+        val items = astroMediaItems.subList(fromIndex, toIndex)
+        items.forEach { it.second?.unload() }
+        items.clear()
     }
 
     /**
@@ -294,6 +379,8 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
         index: Int,
         mediaItem: AstroMediaItem,
     ) {
+        removeMediaItem(index)
+        addMediaItem(index,mediaItem)
     }
 
     /**
@@ -308,14 +395,21 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
         toIndex: Int,
         mediaItems: List<AstroMediaItem>,
     ) {
+        removeMediaItems(fromIndex, toIndex)
+        addMediaItems(fromIndex,mediaItems)
     }
+
+    private var nativeCurrentMediaItemIndex = -1
+
+    /** Using [MutableList] instead of [MutableMap] for operations like `*MediaItems(at index)` **/
+    private val astroMediaItems : MutableList<Pair<AstroMediaItem,Howl?>> = mutableListOf()
 
     /**
      * Returns a list containing all media items in the playlist.
      *
      * @return A list of [AstroMediaItem] objects.
      */
-    actual open fun allMediaItems(): List<AstroMediaItem> = astroMediaItems
+    actual open fun allMediaItems(): List<AstroMediaItem> = astroMediaItems.map { it.first }
 
     /**
      * Applies a transformation function to each media item in the playlist and returns a list of the transformed results.
@@ -323,7 +417,7 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
      * @param transform The transformation function to apply to each media item.
      * @return A list containing the results of applying the transformation function to each media item.
      */
-    actual open fun <T> mapMediaItems(transform: (AstroMediaItem) -> T): List<T> = astroMediaItems.map(transform)
+    actual open fun <T> mapMediaItems(transform: (AstroMediaItem) -> T): List<T> = astroMediaItems.map { transform(it.first) }
 
     /**
      * Gets or sets whether the equalizer is enabled.
@@ -368,12 +462,12 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
         get() = TODO("Not yet implemented")
         set(value) {}
 
-    internal actual val listenersStore: MutableMap<Int, AstroListener>
-        get() = TODO("Not yet implemented")
-
+    internal actual val listenersStore: MutableMap<Int, AstroListener> = mutableMapOf()
     internal actual fun registerNativeListenerForAstro() {
+        // TODO : Register listeners
     }
 
     internal actual fun deregisterNativeListenerForAstro() {
+        // TODO : Deregister listeners
     }
 }

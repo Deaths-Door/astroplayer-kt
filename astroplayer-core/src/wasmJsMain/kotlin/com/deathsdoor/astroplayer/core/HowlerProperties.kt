@@ -14,6 +14,4 @@ external interface HowlerProperties {
     var autoplay: Boolean
     var mute: Boolean
     var rate: JsNumber
-
-    fun on()
 }
