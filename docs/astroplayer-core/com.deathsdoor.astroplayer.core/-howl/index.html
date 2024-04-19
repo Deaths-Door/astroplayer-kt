@@ -1,0 +1,418 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Howl</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            AstroPlayer
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector wasm-like" data-active="" data-filter=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="astroplayer-core::com.deathsdoor.astroplayer.core/Howl///PointingToDeclaration//1009729230">
+  <div class="breadcrumbs"><a href="../../index.html">astroplayer-core</a><span class="delimiter">/</span><a href="../index.html">com.deathsdoor.astroplayer.core</a><span class="delimiter">/</span><span class="current">Howl</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Howl</span></span></h1>
+    <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">class </span><a href="index.html">Howl</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">properties<span class="token operator">: </span><a href="../-howler-properties/index.html">HowlerProperties</a></span></span><span class="token punctuation">)</span> : <a href="../-howler-properties/index.html">HowlerProperties</a></div></div>    </div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="94956755%2FConstructors%2F1009729230" anchor-label="Howl" id="94956755%2FConstructors%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-howl.html"><span><span>Howl</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="94956755%2FConstructors%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">properties<span class="token operator">: </span><a href="../-howler-properties/index.html">HowlerProperties</a></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="2114766165%2FProperties%2F1009729230" anchor-label="autoplay" id="2114766165%2FProperties%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="autoplay.html"><span><span>autoplay</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2114766165%2FProperties%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="autoplay.html">autoplay</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2052512088%2FProperties%2F1009729230" anchor-label="html5" id="2052512088%2FProperties%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="html5.html"><span><span>html5</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2052512088%2FProperties%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="html5.html">html5</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1599060148%2FProperties%2F1009729230" anchor-label="loop" id="1599060148%2FProperties%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="loop.html"><span><span>loop</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1599060148%2FProperties%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="loop.html">loop</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="935627487%2FProperties%2F1009729230" anchor-label="mute" id="935627487%2FProperties%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mute.html"><span><span>mute</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="935627487%2FProperties%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="mute.html">mute</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1772252377%2FProperties%2F1009729230" anchor-label="preload" id="1772252377%2FProperties%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="preload.html"><span><span>preload</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1772252377%2FProperties%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="preload.html">preload</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/-js-any/index.html">JsAny</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="905932280%2FProperties%2F1009729230" anchor-label="rate" id="905932280%2FProperties%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rate.html"><span><span>rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="905932280%2FProperties%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="rate.html">rate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/-js-number/index.html">JsNumber</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-773101728%2FProperties%2F1009729230" anchor-label="seek" id="-773101728%2FProperties%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="seek.html"><span><span>seek</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-773101728%2FProperties%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="seek.html">seek</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/-js-number/index.html">JsNumber</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2102833674%2FProperties%2F1009729230" anchor-label="sources" id="2102833674%2FProperties%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sources.html"><span><span>sources</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2102833674%2FProperties%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="sources.html">sources</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/-js-array/index.html">JsArray</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/-js-string/index.html">JsString</a><span class="token operator">&gt;</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="220040766%2FProperties%2F1009729230" anchor-label="volume" id="220040766%2FProperties%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="volume.html"><span><span>volume</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="220040766%2FProperties%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="volume.html">volume</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1523197372%2FFunctions%2F1009729230" anchor-label="duration" id="-1523197372%2FFunctions%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="duration.html"><span><span>duration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1523197372%2FFunctions%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="duration.html"><span class="token function">duration</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/-js-number/index.html">JsNumber</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1733291208%2FFunctions%2F1009729230" anchor-label="isAnyAudioPlaying" id="1733291208%2FFunctions%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-any-audio-playing.html"><span>is</span><wbr><span>Any</span><wbr><span>Audio</span><wbr><span><span>Playing</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1733291208%2FFunctions%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-any-audio-playing.html"><span class="token function">isAnyAudioPlaying</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="167337245%2FFunctions%2F1009729230" anchor-label="on" id="167337245%2FFunctions%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on.html"><span><span>on</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="167337245%2FFunctions%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="on.html"><span class="token function">on</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">event<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">function<span class="token operator">: </span><span class="token punctuation">(</span>id<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/-js-string/index.html">JsString</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-548567348%2FFunctions%2F1009729230" anchor-label="pause" id="-548567348%2FFunctions%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="pause.html"><span><span>pause</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-548567348%2FFunctions%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="pause.html"><span class="token function">pause</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="542193188%2FFunctions%2F1009729230" anchor-label="play" id="542193188%2FFunctions%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="play.html"><span><span>play</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="542193188%2FFunctions%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="play.html"><span class="token function">play</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/-js-number/index.html">JsNumber</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="735595675%2FFunctions%2F1009729230" anchor-label="release" id="735595675%2FFunctions%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="release.html"><span><span>release</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="735595675%2FFunctions%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="release.html"><span class="token function">release</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1530789009%2FFunctions%2F1009729230" anchor-label="state" id="1530789009%2FFunctions%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="state.html"><span><span>state</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1530789009%2FFunctions%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="state.html"><span class="token function">state</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.js/-js-string/index.html">JsString</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1702220094%2FFunctions%2F1009729230" anchor-label="stopAndReset" id="1702220094%2FFunctions%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stop-and-reset.html"><span>stop</span><wbr><span>And</span><wbr><span><span>Reset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1702220094%2FFunctions%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="stop-and-reset.html"><span class="token function">stopAndReset</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1594109447%2FFunctions%2F1009729230" anchor-label="unload" id="-1594109447%2FFunctions%2F1009729230" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="unload.html"><span><span>unload</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1594109447%2FFunctions%2F1009729230"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/wasmJsMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="unload.html"><span class="token function">unload</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

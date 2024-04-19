@@ -1,0 +1,340 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>AstroListener</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            AstroPlayer
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":astroplayer-core:dokkaHtmlPartial/commonMain">common</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="astroplayer-core::com.deathsdoor.astroplayer.core.listeners/AstroListener///PointingToDeclaration//-375039641">
+  <div class="breadcrumbs"><a href="../../index.html">astroplayer-core</a><span class="delimiter">/</span><a href="../index.html">com.deathsdoor.astroplayer.core.listeners</a><span class="delimiter">/</span><span class="current">AstroListener</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Astro</span><wbr><span><span>Listener</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">AstroListener</a></div><p class="paragraph">Interface representing a listener for events related to playback and media state changes in AstroPlayer.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1396514616%2FFunctions%2F-375039641" anchor-label="onCurrentEqualizerValuesChanged" id="-1396514616%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-current-equalizer-values-changed.html"><span>on</span><wbr><span>Current</span><wbr><span>Equalizer</span><wbr><span>Values</span><wbr><span><span>Changed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1396514616%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-current-equalizer-values-changed.html"><span class="token function">onCurrentEqualizerValuesChanged</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">currentValues<span class="token operator">: </span><a href="../../com.deathsdoor.astroplayer.core.equalizer/-equalizer-values/index.html">EqualizerValues</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when the current equalizer values have changed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1453011657%2FFunctions%2F-375039641" anchor-label="onCurrentMediaItemChanged" id="1453011657%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-current-media-item-changed.html"><span>on</span><wbr><span>Current</span><wbr><span>Media</span><wbr><span>Item</span><wbr><span><span>Changed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1453011657%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-current-media-item-changed.html"><span class="token function">onCurrentMediaItemChanged</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mediaItem<span class="token operator">: </span><a href="../../com.deathsdoor.astroplayer.core/-astro-media-item/index.html">AstroMediaItem</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when the currently playing media item has changed. The new media item might be null if playback has stopped.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1475231061%2FFunctions%2F-375039641" anchor-label="onEqualizerEnabledChanged" id="1475231061%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-equalizer-enabled-changed.html"><span>on</span><wbr><span>Equalizer</span><wbr><span>Enabled</span><wbr><span><span>Changed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1475231061%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-equalizer-enabled-changed.html"><span class="token function">onEqualizerEnabledChanged</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">isEqualizerEnabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when the overall equalizer state (enabled/disabled) has changed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1433332858%2FFunctions%2F-375039641" anchor-label="onMediaItemBuffering" id="1433332858%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-media-item-buffering.html"><span>on</span><wbr><span>Media</span><wbr><span>Item</span><wbr><span><span>Buffering</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1433332858%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-media-item-buffering.html"><span class="token function">onMediaItemBuffering</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when the media player starts buffering data before playback.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="363914702%2FFunctions%2F-375039641" anchor-label="onMuteStateChanged" id="363914702%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-mute-state-changed.html"><span>on</span><wbr><span>Mute</span><wbr><span>State</span><wbr><span><span>Changed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="363914702%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-mute-state-changed.html"><span class="token function">onMuteStateChanged</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">isMuted<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when the mute state of playback has changed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="359238726%2FFunctions%2F-375039641" anchor-label="onPlaybackError" id="359238726%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-playback-error.html"><span>on</span><wbr><span>Playback</span><wbr><span><span>Error</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="359238726%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-playback-error.html"><span class="token function">onPlaybackError</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">exception<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-exception/index.html">Exception</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when a general playback error occurs during playback.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-388074660%2FFunctions%2F-375039641" anchor-label="onPlaybackPaused" id="-388074660%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-playback-paused.html"><span>on</span><wbr><span>Playback</span><wbr><span><span>Paused</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-388074660%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-playback-paused.html"><span class="token function">onPlaybackPaused</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when playback has been paused.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-10641074%2FFunctions%2F-375039641" anchor-label="onPlaybackSpeedChanged" id="-10641074%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-playback-speed-changed.html"><span>on</span><wbr><span>Playback</span><wbr><span>Speed</span><wbr><span><span>Changed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-10641074%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-playback-speed-changed.html"><span class="token function">onPlaybackSpeedChanged</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">speed<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when the playback speed has changed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1188426001%2FFunctions%2F-375039641" anchor-label="onPlaybackStarted" id="-1188426001%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-playback-started.html"><span>on</span><wbr><span>Playback</span><wbr><span><span>Started</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1188426001%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-playback-started.html"><span class="token function">onPlaybackStarted</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when playback has started.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-230910188%2FFunctions%2F-375039641" anchor-label="onRepeatModeChanged" id="-230910188%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-repeat-mode-changed.html"><span>on</span><wbr><span>Repeat</span><wbr><span>Mode</span><wbr><span><span>Changed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-230910188%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-repeat-mode-changed.html"><span class="token function">onRepeatModeChanged</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">repeatMode<span class="token operator">: </span><a href="../../com.deathsdoor.astroplayer.core/-repeat-mode/index.html">RepeatMode</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when the repeat mode for playback has changed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1292234166%2FFunctions%2F-375039641" anchor-label="onSeekBackward" id="-1292234166%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-seek-backward.html"><span>on</span><wbr><span>Seek</span><wbr><span><span>Backward</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1292234166%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-seek-backward.html"><span class="token function">onSeekBackward</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when the playback position is being moved backward (seeking backward).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2019933816%2FFunctions%2F-375039641" anchor-label="onSeekForward" id="-2019933816%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-seek-forward.html"><span>on</span><wbr><span>Seek</span><wbr><span><span>Forward</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2019933816%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-seek-forward.html"><span class="token function">onSeekForward</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when the playback position is being moved forward (seeking forward).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1634777052%2FFunctions%2F-375039641" anchor-label="onSeekToNextMediaItem" id="-1634777052%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-seek-to-next-media-item.html"><span>on</span><wbr><span>Seek</span><wbr><span>To</span><wbr><span>Next</span><wbr><span>Media</span><wbr><span><span>Item</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1634777052%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-seek-to-next-media-item.html"><span class="token function">onSeekToNextMediaItem</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when the playback position is seeked to the next media item in the playlist (if applicable).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-26748504%2FFunctions%2F-375039641" anchor-label="onSeekToPreviousMediaItem" id="-26748504%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-seek-to-previous-media-item.html"><span>on</span><wbr><span>Seek</span><wbr><span>To</span><wbr><span>Previous</span><wbr><span>Media</span><wbr><span><span>Item</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-26748504%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-seek-to-previous-media-item.html"><span class="token function">onSeekToPreviousMediaItem</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when the playback position is seeked to the previous media item in the playlist (if applicable).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1077635858%2FFunctions%2F-375039641" anchor-label="onShuffleModeChanged" id="1077635858%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-shuffle-mode-changed.html"><span>on</span><wbr><span>Shuffle</span><wbr><span>Mode</span><wbr><span><span>Changed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1077635858%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-shuffle-mode-changed.html"><span class="token function">onShuffleModeChanged</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shuffleModeEnabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when the shuffle mode for playback has changed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2102600754%2FFunctions%2F-375039641" anchor-label="onSmartEqualizerEnabledChanged" id="-2102600754%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-smart-equalizer-enabled-changed.html"><span>on</span><wbr><span>Smart</span><wbr><span>Equalizer</span><wbr><span>Enabled</span><wbr><span><span>Changed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2102600754%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-smart-equalizer-enabled-changed.html"><span class="token function">onSmartEqualizerEnabledChanged</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">isSmartEqualizerEnabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when the smart equalizer state (enabled/disabled) has changed. Smart equalizer might be a specific type of equalization that applies automatic adjustments.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1620628524%2FFunctions%2F-375039641" anchor-label="onVolumeChanged" id="1620628524%2FFunctions%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-volume-changed.html"><span>on</span><wbr><span>Volume</span><wbr><span><span>Changed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1620628524%2FFunctions%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="on-volume-changed.html"><span class="token function">onVolumeChanged</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">volume<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Called when the playback volume has changed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
