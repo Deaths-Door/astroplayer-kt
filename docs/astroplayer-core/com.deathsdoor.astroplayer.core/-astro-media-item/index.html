@@ -1,0 +1,188 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>AstroMediaItem</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            AstroPlayer
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":astroplayer-core:dokkaHtmlPartial/androidMain">android</button>
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":astroplayer-core:dokkaHtmlPartial/commonMain">common</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="astroplayer-core::com.deathsdoor.astroplayer.core/AstroMediaItem///PointingToDeclaration//-375039641">
+  <div class="breadcrumbs"><a href="../../index.html">astroplayer-core</a><span class="delimiter">/</span><a href="../index.html">com.deathsdoor.astroplayer.core</a><span class="delimiter">/</span><span class="current">AstroMediaItem</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Astro</span><wbr><span>Media</span><wbr><span><span>Item</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">AstroMediaItem</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>mediaId<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>source<span class="token operator">: </span><span data-unresolved-link="com.eygraber.uri/Uri///PointingToDeclaration/">Uri</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>metadata<span class="token operator">: </span><a href="../-astro-media-metadata/index.html">AstroMediaMetadata</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div><p class="paragraph">A data class representing a single media item in the AstroPlayer playlist.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="982823878%2FConstructors%2F-375039641" anchor-label="AstroMediaItem" id="982823878%2FConstructors%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-astro-media-item.html"><span>Astro</span><wbr><span>Media</span><wbr><span><span>Item</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="982823878%2FConstructors%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mediaId<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">source<span class="token operator">: </span><span data-unresolved-link="com.eygraber.uri/Uri///PointingToDeclaration/">Uri</span><span class="token punctuation">, </span></span><span class="parameter ">metadata<span class="token operator">: </span><a href="../-astro-media-metadata/index.html">AstroMediaMetadata</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="119098119%2FProperties%2F-375039641" anchor-label="mediaId" id="119098119%2FProperties%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="media-id.html"><span>media</span><wbr><span><span>Id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="119098119%2FProperties%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="media-id.html">mediaId</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">A unique identifier for the media item. The format and meaning of this ID are implementation-specific. This ID can be used to reference the media item within the AstroPlayer API.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="98825733%2FProperties%2F-375039641" anchor-label="metadata" id="98825733%2FProperties%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="metadata.html"><span><span>metadata</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="98825733%2FProperties%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="metadata.html">metadata</a><span class="token operator">: </span><a href="../-astro-media-metadata/index.html">AstroMediaMetadata</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Optional metadata associated with the media item. This <a href="../-astro-media-metadata/index.html">AstroMediaMetadata</a> provides additional information such as title, artist, album, genre, and more.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1860363353%2FProperties%2F-375039641" anchor-label="source" id="1860363353%2FProperties%2F-375039641" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="source.html"><span><span>source</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1860363353%2FProperties%2F-375039641"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="source.html">source</a><span class="token operator">: </span><span data-unresolved-link="com.eygraber.uri/Uri///PointingToDeclaration/">Uri</span></div><div class="brief "><p class="paragraph">The URI (Uniform Resource Identifier) of the media resource to play. This can be:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="EXTENSION_FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="1206006424%2FFunctions%2F-1940734061" anchor-label="asNativeMediaItem" id="1206006424%2FFunctions%2F-1940734061" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/androidMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/androidMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/androidMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../as-native-media-item.html"><span>as</span><wbr><span>Native</span><wbr><span>Media</span><wbr><span><span>Item</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1206006424%2FFunctions%2F-1940734061"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/androidMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html">AstroMediaItem</a><span class="token punctuation">.</span><a href="../as-native-media-item.html"><span class="token function">asNativeMediaItem</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">metadata<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/media3/common/MediaMetadata.html">MediaMetadata</a><span class="token operator">?</span><span class="token operator"> = </span>this.metadata?.asNativeMediaMetadata()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/media3/common/MediaItem.html">MediaItem</a></div><div class="brief "><p class="paragraph">Converts an <code class="lang-kotlin">AstroMediaItem</code> object to a platform-specific <code class="lang-kotlin">MediaItem</code> object suitable for the underlying media player.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-784114471%2FFunctions%2F-1940734061" anchor-label="asNativeMediaItemBuilder" id="-784114471%2FFunctions%2F-1940734061" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/androidMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/androidMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/androidMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../as-native-media-item-builder.html"><span>as</span><wbr><span>Native</span><wbr><span>Media</span><wbr><span>Item</span><wbr><span><span>Builder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-784114471%2FFunctions%2F-1940734061"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-core:dokkaHtmlPartial/androidMain" data-filterable-set=":astroplayer-core:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":astroplayer-core:dokkaHtmlPartial/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-core:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html">AstroMediaItem</a><span class="token punctuation">.</span><a href="../as-native-media-item-builder.html"><span class="token function">asNativeMediaItemBuilder</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">metadata<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/media3/common/MediaMetadata.html">MediaMetadata</a><span class="token operator">?</span><span class="token operator"> = </span>this.metadata?.asNativeMediaMetadata()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/media3/common/MediaItem.Builder.html">MediaItem.Builder</a></div><div class="brief "><p class="paragraph">Creates a builder object for a platform-specific <code class="lang-kotlin">MediaItem</code> compatible with the underlying media player, pre-populated with data from the current <code class="lang-kotlin">AstroMediaItem</code>.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

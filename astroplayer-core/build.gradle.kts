@@ -5,11 +5,13 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.documentation)
-
 }
 
 kotlin {
     applyDefaultHierarchyTemplate()
+
+    jvmToolchain(11)
+
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         moduleName = "astroplayer_core"
@@ -75,14 +77,21 @@ kotlin {
 
 android {
     namespace = "com.deathsdoor.astroplayer.core"
-    compileSdk = 34
+
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
+
     defaultConfig {
-        minSdk = 24
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
+
+
+
 }
 dependencies {
     implementation(libs.androidx.annotation.jvm)

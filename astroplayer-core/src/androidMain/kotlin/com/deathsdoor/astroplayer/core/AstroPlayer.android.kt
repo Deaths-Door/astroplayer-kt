@@ -519,6 +519,9 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
                     }
                 }
             }
+
+            forEachListener { it.onEqualizerEnabledChanged(field) }
+
         }
 
     /**Refer to documentation in for **commonMain** source set **/
@@ -534,6 +537,9 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
                     }
                 }
             }
+
+            forEachListener { it.onCurrentEqualizerValuesChanged(field) }
+
         }
 
     private var _equalizerSmartListener : Player.Listener? = null
@@ -574,6 +580,8 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
                     _equalizerSmartListener = null
                 }
             }
+
+            forEachListener { it.onSmartEqualizerEnabledChanged(field) }
         }
 
     private var astroNativeListener : Player.Listener? = null
@@ -671,7 +679,7 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
         astroNativeListener = null
     }
 
-    companion object {
+    actual companion object {
         /**
          * Creates a `MediaController` instance for an Android `MediaSessionService`.
          *

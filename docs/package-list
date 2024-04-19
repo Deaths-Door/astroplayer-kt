@@ -1,0 +1,10 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+
+module:astroplayer-core
+com.deathsdoor.astroplayer.core
+com.deathsdoor.astroplayer.core.equalizer
+com.deathsdoor.astroplayer.core.listeners
+module:astroplayer-ui
+com.deathsdoor.astroplayer.ui
+com.deathsdoor.astroplayer.ui.icons

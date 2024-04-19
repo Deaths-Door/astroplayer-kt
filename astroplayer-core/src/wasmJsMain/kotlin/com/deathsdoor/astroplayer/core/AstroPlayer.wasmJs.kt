@@ -217,18 +217,14 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
         // Only update index if we have a next mediaitem
         nativeCurrentMediaItemIndex = index
 
-        fun createHowlProperties(source : String) : HowlerProperties = js("""
-                            { src :["$source"] , 
-                            volume : ${nativeMediaPlayer.volume}, 
-                            html : ${nativeMediaPlayer.html5}, 
-                            loop : ${nativeMediaPlayer.loop}, 
-                            preload : ${nativeMediaPlayer.preload}, autoplay : ${nativeMediaPlayer.autoplay}, mute : ${nativeMediaPlayer.mute} , rate : ${ nativeMediaPlayer.rate}  }
-                        """)
-
         // Create new howl for the next media item , now the player is set for the current media item
-        val mediaItem = astroMediaItems[nativeCurrentMediaItemIndex].first.source.toString()
-        val properties = createHowlProperties(mediaItem)
+        val mediaItem = astroMediaItems[nativeCurrentMediaItemIndex]
+        val source = mediaItem.first.source.toString()
+        val properties = nativeMediaPlayer.createHowlProperties(source)
         nativeMediaPlayer = Howl(properties)
+
+        // Associate the new mediaplayer with this item
+        astroMediaItems[nativeCurrentMediaItemIndex] = mediaItem.first to nativeMediaPlayer
     }
 
     /**
@@ -422,9 +418,11 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
     /**
      * Gets or sets whether the equalizer is enabled.
      */
-    actual var isEqualizerEnabled: Boolean
-        get() = TODO("Not yet implemented")
-        set(value) {}
+    actual var isEqualizerEnabled: Boolean = false
+        set(value) {
+            field = value
+            forEachListener { it.onEqualizerEnabledChanged(field) }
+        }
 
     /**
      * An optional callback function that allows you to provide custom equalizer values for specific equalizer preset IDs.
@@ -435,9 +433,7 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
      *
      * If this property is null, the player will use its default equalizer settings for each preset.
      */
-    actual var smartEqualizerPicker: ((id: String) -> EqualizerValues)?
-        get() = TODO("Not yet implemented")
-        set(value) {}
+    actual var smartEqualizerPicker: ((id: String) -> EqualizerValues)? = null
 
     /**
      * Gets or sets whether smart equalizer is enabled. When enabled, the player will attempt to apply an equalizer
@@ -451,16 +447,20 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
      *    will call this callback function with the media item's equalizer ID, and those custom values will be applied.
      * 4. **No Equalizer Applied:** If none of the above conditions are met, no equalizer will be applied to the playback.
      */
-    actual var isSmartEqualizerEnabled: Boolean
-        get() = TODO("Not yet implemented")
-        set(value) {}
+    actual var isSmartEqualizerEnabled: Boolean = isEqualizerEnabled
+        set(value) {
+            field = value
+            forEachListener { it.onSmartEqualizerEnabledChanged(field) }
+        }
 
     /**
      * Gets the current equalizer values, or null if the equalizer is not enabled or not supported.
      */
-    actual var currentEqualizerValues: EqualizerValues?
-        get() = TODO("Not yet implemented")
-        set(value) {}
+    actual var currentEqualizerValues: EqualizerValues? = null
+        set(value) {
+            field = value
+            forEachListener { it.onCurrentEqualizerValuesChanged(field) }
+        }
 
     internal actual val listenersStore: MutableMap<Int, AstroListener> = mutableMapOf()
     internal actual fun registerNativeListenerForAstro() {
@@ -470,4 +470,7 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
     internal actual fun deregisterNativeListenerForAstro() {
         // TODO : Deregister listeners
     }
+
+
+    actual companion object
 }

@@ -1,5 +1,5 @@
-@file:Suppress("UNUSED"
-)
+@file:Suppress("UNUSED")
+
 package com.deathsdoor.astroplayer.core
 
 import com.deathsdoor.astroplayer.core.listeners.AstroListener
@@ -86,7 +86,7 @@ fun AstroPlayer.seekToNextMediaItem() {
  * This method checks if there's a previous media item using `hasPreviousMediaItem` and seeks to it using
  * `seekToMediaItem(currentMediaItemIndex - 1)` if there is one.
  */
-fun AstroPlayer.seekToPrevious() {
+fun AstroPlayer.seekToPreviousMediaItem() {
     if (hasPreviousMediaItem) {
         seekToMediaItem(currentMediaItemIndex - 1)
     }

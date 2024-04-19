@@ -1,0 +1,214 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>com.deathsdoor.astroplayer.ui</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../index.html">
+                            AstroPlayer
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":astroplayer-ui:dokkaHtmlPartial/androidMain">android</button>
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":astroplayer-ui:dokkaHtmlPartial/commonMain">common</button>
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":astroplayer-ui:dokkaHtmlPartial/iosMain">ios</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageids="astroplayer-ui::com.deathsdoor.astroplayer.ui////PointingToDeclaration//-1893467600">
+  <div class="breadcrumbs"><a href="../index.html">astroplayer-ui</a><span class="delimiter">/</span><span class="current">com.deathsdoor.astroplayer.ui</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-1726017048%2FClasslikes%2F596982408" anchor-label="AndroidPlatform" id="-1726017048%2FClasslikes%2F596982408" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/androidMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-ui:dokkaHtmlPartial/androidMain" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/androidMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-android-platform/index.html"><span>Android</span><wbr><span><span>Platform</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1726017048%2FClasslikes%2F596982408"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-ui:dokkaHtmlPartial/androidMain" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":astroplayer-ui:dokkaHtmlPartial/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-ui:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-android-platform/index.html">AndroidPlatform</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1264465031%2FClasslikes%2F984759570" anchor-label="AstroPlayerState" id="1264465031%2FClasslikes%2F984759570" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-ui:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-astro-player-state/index.html"><span>Astro</span><wbr><span>Player</span><wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1264465031%2FClasslikes%2F984759570"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-ui:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Stable.html"><span class="token annotation builtin">Stable</span></a></div></div><span class="token keyword">class </span><a href="-astro-player-state/index.html">AstroPlayerState</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">astroPlayer<span class="token operator">: </span><a href="../../astroplayer-core/com.deathsdoor.astroplayer.core/-astro-player/index.html">AstroPlayer</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A class that represents the mutable state of an <a href="../../astroplayer-core/com.deathsdoor.astroplayer.core/-astro-player/index.html">AstroPlayer</a> instance for use with Jetpack Compose.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1996356470%2FClasslikes%2F364695802" anchor-label="IOSPlatform" id="-1996356470%2FClasslikes%2F364695802" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/iosMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-ui:dokkaHtmlPartial/iosMain" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/iosMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-i-o-s-platform/index.html"><span><span>IOSPlatform</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1996356470%2FClasslikes%2F364695802"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":astroplayer-ui:dokkaHtmlPartial/iosMain" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/iosMain" data-active="" data-toggle=":astroplayer-ui:dokkaHtmlPartial/iosMain">ios</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-ui:dokkaHtmlPartial/iosMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-i-o-s-platform/index.html">IOSPlatform</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-800392634%2FFunctions%2F984759570" anchor-label="NextMediaItemButton" id="-800392634%2FFunctions%2F984759570" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-ui:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-next-media-item-button.html"><span>Next</span><wbr><span>Media</span><wbr><span>Item</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-800392634%2FFunctions%2F984759570"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-ui:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html"><span class="token annotation builtin">Composable</span></a></div></div><span class="token keyword">fun </span><a href="-next-media-item-button.html"><span class="token function">NextMediaItemButton</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">astroPlayerState<span class="token operator">: </span><a href="-astro-player-state/index.html">AstroPlayerState</a><span class="token punctuation">, </span></span><span class="parameter ">modifier<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/Modifier.html">Modifier</a><span class="token operator"> = </span>Modifier<span class="token punctuation">, </span></span><span class="parameter ">onClick<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{ astroPlayerState.astroPlayer.seekToNextMediaItem() }<span class="token punctuation">, </span></span><span class="parameter ">imageVector<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/vector/ImageVector.html">ImageVector</a><span class="token operator"> = </span>Icons.Outlined.SkipNext<span class="token punctuation">, </span></span><span class="parameter ">contentDescription<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">"Seek to next MediaItem"</span><span class="token punctuation">, </span></span><span class="parameter ">enabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">colors<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/material3/IconButtonColors.html">IconButtonColors</a><span class="token operator"> = </span>IconButtonDefaults.iconButtonColors()<span class="token punctuation">, </span></span><span class="parameter ">interactionSource<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/interaction/MutableInteractionSource.html">MutableInteractionSource</a><span class="token operator"> = </span>remember { MutableInteractionSource() }</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A composable function that renders a button to seek to the next media item in a player.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-401274330%2FFunctions%2F984759570" anchor-label="PauseButton" id="-401274330%2FFunctions%2F984759570" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-ui:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-pause-button.html"><span>Pause</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-401274330%2FFunctions%2F984759570"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-ui:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html"><span class="token annotation builtin">Composable</span></a></div></div><span class="token keyword">fun </span><a href="-pause-button.html"><span class="token function">PauseButton</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">modifier<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/Modifier.html">Modifier</a><span class="token operator"> = </span>Modifier<span class="token punctuation">, </span></span><span class="parameter ">onClick<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token punctuation">, </span></span><span class="parameter ">imageVector<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/vector/ImageVector.html">ImageVector</a><span class="token operator"> = </span>Icons.Outlined.Pause<span class="token punctuation">, </span></span><span class="parameter ">contentDescription<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">"Current Song is Paused"</span><span class="token punctuation">, </span></span><span class="parameter ">enabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">colors<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/material3/IconButtonColors.html">IconButtonColors</a><span class="token operator"> = </span>IconButtonDefaults.iconButtonColors()<span class="token punctuation">, </span></span><span class="parameter ">interactionSource<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/interaction/MutableInteractionSource.html">MutableInteractionSource</a><span class="token operator"> = </span>remember { MutableInteractionSource() }</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A composable function that renders a Pause button with customizable appearance and behavior.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="15720252%2FFunctions%2F984759570" anchor-label="PlayButton" id="15720252%2FFunctions%2F984759570" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-ui:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-play-button.html"><span>Play</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="15720252%2FFunctions%2F984759570"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-ui:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html"><span class="token annotation builtin">Composable</span></a></div></div><span class="token keyword">fun </span><a href="-play-button.html"><span class="token function">PlayButton</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">modifier<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/Modifier.html">Modifier</a><span class="token operator"> = </span>Modifier<span class="token punctuation">, </span></span><span class="parameter ">onClick<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token punctuation">, </span></span><span class="parameter ">imageVector<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/vector/ImageVector.html">ImageVector</a><span class="token operator"> = </span>Icons.Filled.PlayArrow<span class="token punctuation">, </span></span><span class="parameter ">contentDescription<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">"Current Song is Playing"</span><span class="token punctuation">, </span></span><span class="parameter ">enabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">colors<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/material3/IconButtonColors.html">IconButtonColors</a><span class="token operator"> = </span>IconButtonDefaults.iconButtonColors()<span class="token punctuation">, </span></span><span class="parameter ">interactionSource<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/interaction/MutableInteractionSource.html">MutableInteractionSource</a><span class="token operator"> = </span>remember { MutableInteractionSource() }</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A composable function that renders a Play button with customizable appearance and behavior.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1373100738%2FFunctions%2F984759570" anchor-label="PreviousMediaItemButton" id="1373100738%2FFunctions%2F984759570" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-ui:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-previous-media-item-button.html"><span>Previous</span><wbr><span>Media</span><wbr><span>Item</span><wbr><span><span>Button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1373100738%2FFunctions%2F984759570"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-ui:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html"><span class="token annotation builtin">Composable</span></a></div></div><span class="token keyword">fun </span><a href="-previous-media-item-button.html"><span class="token function">PreviousMediaItemButton</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">astroPlayerState<span class="token operator">: </span><a href="-astro-player-state/index.html">AstroPlayerState</a><span class="token punctuation">, </span></span><span class="parameter ">modifier<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/Modifier.html">Modifier</a><span class="token operator"> = </span>Modifier<span class="token punctuation">, </span></span><span class="parameter ">onClick<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{ astroPlayerState.astroPlayer.seekToPreviousMediaItem() }<span class="token punctuation">, </span></span><span class="parameter ">imageVector<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/vector/ImageVector.html">ImageVector</a><span class="token operator"> = </span>Icons.Outlined.SkipPrevious<span class="token punctuation">, </span></span><span class="parameter ">contentDescription<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">"Seek to previous MediaItem"</span><span class="token punctuation">, </span></span><span class="parameter ">enabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">colors<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/material3/IconButtonColors.html">IconButtonColors</a><span class="token operator"> = </span>IconButtonDefaults.iconButtonColors()<span class="token punctuation">, </span></span><span class="parameter ">interactionSource<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/foundation/interaction/MutableInteractionSource.html">MutableInteractionSource</a><span class="token operator"> = </span>remember { MutableInteractionSource() }</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A composable function that renders a button to seek to the previous media item in a player.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-473415930%2FFunctions%2F984759570" anchor-label="rememberAstroPlayerState" id="-473415930%2FFunctions%2F984759570" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":astroplayer-ui:dokkaHtmlPartial/commonMain" data-filterable-set=":astroplayer-ui:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="remember-astro-player-state.html"><span>remember</span><wbr><span>Astro</span><wbr><span>Player</span><wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-473415930%2FFunctions%2F984759570"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":astroplayer-ui:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html"><span class="token annotation builtin">Composable</span></a></div></div><span class="token keyword">fun </span><a href="remember-astro-player-state.html"><span class="token function">rememberAstroPlayerState</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">astroPlayer<span class="token operator">: </span><a href="../../astroplayer-core/com.deathsdoor.astroplayer.core/-astro-player/index.html">AstroPlayer</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-astro-player-state/index.html">AstroPlayerState</a></div><div class="brief "><p class="paragraph">This Jetpack Compose function creates and remembers an <a href="-astro-player-state/index.html">AstroPlayerState</a> object associated with the provided <code class="lang-kotlin">AstroPlayer</code> instance.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -250,6 +250,8 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
         set(value) {
             field = value
             if(!field) _nativeMediaPlayer.audio().setEqualizer(null)
+
+            forEachListener { it.onEqualizerEnabledChanged(field) }
         }
 
     actual var currentEqualizerValues: EqualizerValues? = null
@@ -264,6 +266,9 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
 
                 _nativeMediaPlayer.audio().setEqualizer(equalizer)
             }
+
+            forEachListener { it.onCurrentEqualizerValuesChanged(field) }
+
         }
 
     actual var smartEqualizerPicker: ((id: String) -> EqualizerValues)? = null
@@ -288,6 +293,9 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
                 }
                 false -> _smartEqualizerUpdater = null
             }
+
+            forEachListener { it.onSmartEqualizerEnabledChanged(field) }
+
         }
 
     private var astroNativeListener : MediaPlayerEventAdapter? = null
@@ -342,4 +350,6 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
     internal actual fun deregisterNativeListenerForAstro() {
         nativeMediaPlayer.mediaPlayer().events().removeMediaPlayerEventListener(astroNativeListener)
     }
+
+    actual companion object
 }
