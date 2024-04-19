@@ -16,7 +16,7 @@ AstroPlayer is an open-source media player designed for the Kotlin Multiplatform
 
 **Documentation:**
 
-Detailed documentation can be found at https://www.here.com/docs/.
+Detailed documentation can be found [here](https://deaths-door.github.io/astroplayer-kt/).
 
 ## Development Status
 
