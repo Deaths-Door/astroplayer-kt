@@ -28,6 +28,7 @@ kotlin {
     }
 
     androidTarget {
+        publishLibraryVariants("release","debug")
         compilations.all {
             kotlinOptions {
                 jvmTarget = "11"
@@ -37,7 +38,7 @@ kotlin {
 
     jvm("desktop")
 
-    listOf(
+    if(System.getProperty("os.name") == "Mac OS X") listOf(
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
@@ -123,8 +124,8 @@ publishing {
 
         withType<MavenPublication> {
             pom {
-                groupId = "io.github.deathsdooor"
-                version = "0.1.1-SNAPSHORT"
+                groupId = "com.deathsdooor.astroplayer"
+                version = "0.1.0"
 
                 name.set("astroplayer-core")
                 description.set("AstroPlayer is an open-source media player designed for the Kotlin Multiplatform. It provides a simple API for audio playback and supports multiple media formats while also providing an Jetpack Compose UI.")

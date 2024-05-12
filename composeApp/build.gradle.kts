@@ -10,7 +10,7 @@ plugins {
 }
 
 kotlin {
-    @OptIn(ExperimentalWasmDsl::class)
+    /*@OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         moduleName = "composeApp"
         browser {
@@ -26,7 +26,7 @@ kotlin {
         }
         binaries.executable()
     }
-    
+    */
     androidTarget {
         compilations.all {
             kotlinOptions {
@@ -36,18 +36,20 @@ kotlin {
     }
     
     jvm("desktop")
-    
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "ComposeApp"
-            isStatic = true
+
+    if(System.getProperty("os.name") == "Mac OS X") {
+        listOf(
+            iosX64(),
+            iosArm64(),
+            iosSimulatorArm64()
+        ).forEach { iosTarget ->
+            iosTarget.binaries.framework {
+                baseName = "ComposeApp"
+                isStatic = true
+            }
         }
     }
-    
+
     sourceSets {
         val desktopMain by getting
         
@@ -62,6 +64,9 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+
+            implementation("com.deathsdooor.astroplayer:astroplayer-core:0.1.0")
+            implementation("com.deathsdooor.astroplayer:astroplayer-ui:0.1.0")
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
