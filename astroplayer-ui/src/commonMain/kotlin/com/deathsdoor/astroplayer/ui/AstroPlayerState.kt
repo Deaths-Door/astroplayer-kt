@@ -24,7 +24,7 @@ import com.deathsdoor.astroplayer.core.listeners.AstroListener
  * It provides a convenient way to manage state within composables while keeping the player logic separate.
  */
 @Stable
-class AstroPlayerState(internal val astroPlayer: AstroPlayer) {
+class AstroPlayerState(val astroPlayer: AstroPlayer) {
     init {
         astroPlayer.addListener(object : AstroListener {
             override fun onPlaybackStarted() {
