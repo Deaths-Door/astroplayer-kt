@@ -415,6 +415,7 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
      */
     actual open fun <T> mapMediaItems(transform: (AstroMediaItem) -> T): List<T> = astroMediaItems.map { transform(it.first) }
 
+    // TODO : Work on equalizers for wasm target
     /**
      * Gets or sets whether the equalizer is enabled.
      */

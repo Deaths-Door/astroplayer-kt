@@ -531,7 +531,7 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
 
             if(isEqualizerEnabled && field != null) {
                 synchronized(_equalizerLock) {
-                    field?.forEachIndexed { index, value ->
+                    field?.forEachIndexed { index, (_,value) ->
                         val bandLevel = (value * 1000).toInt().toShort()
                         _equalizer!!.setBandLevel(index.toShort(), bandLevel)
                     }
@@ -539,7 +539,6 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
             }
 
             forEachListener { it.onCurrentEqualizerValuesChanged(field) }
-
         }
 
     private var _equalizerSmartListener : Player.Listener? = null

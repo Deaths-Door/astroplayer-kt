@@ -261,7 +261,7 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
             if(isEqualizerEnabled && field != null) {
                 val equalizer = equalizerApi.newEqualizer(field!!.identifier)
 
-                val amps = field!!.map { band -> (band * 1000).toInt().toFloat() }
+                val amps = field!!.map { (_,band) -> (band * 1000).toInt().toFloat() }
                 equalizer.setAmps(amps.toFloatArray())
 
                 _nativeMediaPlayer.audio().setEqualizer(equalizer)

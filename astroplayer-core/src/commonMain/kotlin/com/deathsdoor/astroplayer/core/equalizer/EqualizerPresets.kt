@@ -1,5 +1,6 @@
 package com.deathsdoor.astroplayer.core.equalizer
 
+// TODO : update these presets now
 /**
  * An object that provides a collection of predefined equalizer values for various music genres.
  */
@@ -79,19 +80,19 @@ object EqualizerPresets {
      * A map containing all available equalizer presets, with their corresponding IDs as keys.
      */
     val AllPresets = listOf(
-        EqualizerPresets.Default,
-        EqualizerPresets.HipHop,
-        EqualizerPresets.Rock,
-        EqualizerPresets.Dance,
-        EqualizerPresets.Classical,
-        EqualizerPresets.Pop,
-        EqualizerPresets.Jazz,
-        EqualizerPresets.RNB,
-        EqualizerPresets.Electronic,
-        EqualizerPresets.Country,
-        EqualizerPresets.Reggae,
-        EqualizerPresets.Blues,
-        EqualizerPresets.Metal,
-        EqualizerPresets.Folk
+        Default,
+        HipHop,
+        Rock,
+        Dance,
+        Classical,
+        Pop,
+        Jazz,
+        RNB,
+        Electronic,
+        Country,
+        Reggae,
+        Blues,
+        Metal,
+        Folk
     ).associateBy { it.identifier }
 }

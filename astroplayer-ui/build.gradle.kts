@@ -71,6 +71,14 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+    buildFeatures.compose = true
+    composeOptions.kotlinCompilerExtensionVersion = "1.5.8"
+
+    dependencies {
+        debugImplementation(compose.uiTooling)
+        implementation(compose.preview)
+    }
 }
 
 // Based on https://medium.com/kodein-koders/publish-a-kotlin-multiplatform-library-on-maven-central-6e8a394b7030
