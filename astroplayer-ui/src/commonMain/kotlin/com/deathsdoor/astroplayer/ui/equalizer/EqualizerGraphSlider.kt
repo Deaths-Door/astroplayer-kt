@@ -2,6 +2,9 @@ package com.deathsdoor.astroplayer.ui.equalizer
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.sizeIn
+import androidx.compose.foundation.pager.PageSize.Fill.calculateMainAxisPageSize
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderColors
@@ -16,7 +19,10 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.layout.positionInWindow
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.Density
+import androidx.compose.ui.unit.constrainWidth
 import com.deathsdoor.astroplayer.ui.states.EqualizerGraphState
 
 
@@ -162,6 +168,6 @@ private fun Modifier.rotateVertically() = graphicsLayer {
         )
     )
     layout(placeable.height, placeable.width) {
-        placeable.place(-placeable.width, 0)
+        placeable.place(-placeable.width,placeable.height)
     }
 }

@@ -1,80 +1,88 @@
 package com.deathsdoor.astroplayer.core.equalizer
 
-// TODO : update these presets now
 /**
  * An object that provides a collection of predefined equalizer values for various music genres.
  */
+@Suppress("MemberVisibilityCanBePrivate")
 object EqualizerPresets {
-
     /**
      * The default equalizer preset with balanced settings.
      */
-    val Default = EqualizerValues("default", 0f, 0f, 0f, 0f, 0f)
+    val Default = EqualizerValues("default", mapOf(20 to 0.5f,60 to 0.5f,125 to 0.5f,170 to 0.5f,250 to 0.5f,500 to 0.5f,1000 to 0.5f,2000 to 0.5f,3600 to 0.5f,8000 to 0.5f,16000 to 0.5f))
 
     /**
-     * A preset optimized for Hip Hop music, emphasizing bass and low-mids.
+     * A preset optimized for HipHop music
      */
-    val HipHop = EqualizerValues("hiphop", 2.1f, 0.8f, 3.7f, 1.2f, 1.9f)
+    val HipHop = EqualizerValues(identifier="hiphop",frequencies=mapOf(20 to 0.8f,60 to 0.8f,125 to 0.6f,170 to 0.5f,250 to 0.6f,500 to 0.7f,1000 to 0.8f,2000 to 1.0f,3600 to 0.8f,8000 to 0.7f,16000 to 0.6f))
+
 
     /**
-     * A preset optimized for Rock music, emphasizing guitars and drums.
+     * A preset optimized for Rock music
      */
-    val Rock = EqualizerValues("rock", 1.8f, 2.5f, 1.7f, 0.9f, 1.3f)
+    val Rock = EqualizerValues(identifier="rock",frequencies=mapOf(20 to 0.7f,60 to 0.7f,125 to 0.8f,170 to 1.0f,250 to 0.8f,500 to 0.6f,1000 to 0.5f,2000 to 0.6f,3600 to 0.7f,8000 to 0.8f,16000 to 0.7f))
+
 
     /**
-     * A preset optimized for Dance music, emphasizing bass and high-mids.
+     * A preset optimized for Dance music
      */
-    val Dance = EqualizerValues("dance", 0.7f, 2.2f, 2.8f, 2.4f, 0.8f)
+    val Dance = EqualizerValues(identifier="dance",frequencies=mapOf(20 to 0.6f,60 to 0.6f,125 to 0.7f,170 to 0.8f,250 to 1.0f,500 to 0.8f,1000 to 0.7f,2000 to 0.8f,3600 to 0.6f,8000 to 0.6f,16000 to 0.5f))
+
 
     /**
-     * A preset optimized for Classical music, emphasizing clarity and detail.
+     * A preset optimized for Classical music
      */
-    val Classical = EqualizerValues("classical", 0.32f, 0.65f, 1.2f, 1.4f, 1.8f)
+    val Classical = EqualizerValues(identifier="classical",frequencies=mapOf(20 to 0.5f,60 to 0.6f,125 to 0.7f,170 to 0.8f,250 to 1.0f,500 to 0.8f,1000 to 0.7f,2000 to 0.6f,3600 to 0.5f,8000 to 0.5f,16000 to 0.5f))
+
 
     /**
-     * A preset optimized for Pop music, emphasizing vocals and instruments.
+     * A preset optimized for Pop music
      */
-    val Pop = EqualizerValues("pop", 1.7f, 0.9f, 1.8f, 1.1f, 1.2f)
+    val Pop = EqualizerValues(identifier="pop",frequencies=mapOf(20 to 0.6f,60 to 0.7f,125 to 0.8f,170 to 0.9f,250 to 1.0f,500 to 0.8f,1000 to 0.7f,2000 to 0.6f,3600 to 0.6f,8000 to 0.7f,16000 to 0.6f))
+
 
     /**
-     * A preset optimized for Jazz music, emphasizing midrange and warmth.
+     * A preset optimized for Jazz music
      */
-    val Jazz = EqualizerValues("jazz", 0.4f, -0.94f, 1.6f, 1.9f, 0.7f) // Note: Includes a negative gain value
+    val Jazz = EqualizerValues(identifier="jazz",frequencies=mapOf(20 to 0.6f,60 to 0.7f,125 to 0.8f,170 to 0.8f,250 to 0.9f,500 to 1.0f,1000 to 0.8f,2000 to 0.7f,3600 to 0.6f,8000 to 0.5f,16000 to 0.5f))
+
 
     /**
-     * A preset optimized for R&B music, emphasizing vocals and bass.
+     * A preset optimized for RNB music
      */
-    val RNB = EqualizerValues("rnb", 1.3f, 1.1f, 0.9f, 1.7f, 1.6f)
+    val RNB = EqualizerValues(identifier="rnb",frequencies=mapOf(20 to 0.7f,60 to 0.8f,125 to 0.8f,170 to 0.8f,250 to 0.8f,500 to 1.0f,1000 to 0.8f,2000 to 0.7f,3600 to 0.6f,8000 to 0.6f,16000 to 0.5f))
+
 
     /**
-     * A preset optimized for Electronic music, emphasizing synthesizers and effects.
+     * A preset optimized for Electronic music
      */
-    val Electronic = EqualizerValues("electronic", 0.9f, 1.0f, 0.8f, 2.3f, 2.1f)
+    val Electronic = EqualizerValues(identifier="electronic",frequencies=mapOf(20 to 0.6f,60 to 0.6f,125 to 0.6f,170 to 0.7f,250 to 0.8f,500 to 1.0f,1000 to 0.8f,2000 to 0.7f,3600 to 0.8f,8000 to 0.8f,16000 to 0.7f))
+
 
     /**
-     * A preset optimized for Country music, emphasizing vocals and midrange instruments.
+     * A preset optimized for Country music
      */
-    val Country = EqualizerValues("country", 0.6f, 0.4f, 1.1f, 1.8f, 1.4f)
+    val Country = EqualizerValues(identifier="country",frequencies=mapOf(20 to 0.7f,60 to 0.8f,125 to 0.9f,170 to 1.0f,250 to 0.8f,500 to 0.6f,1000 to 0.5f,2000 to 0.6f,3600 to 0.7f,8000 to 0.8f,16000 to 0.7f))
+
 
     /**
-     * A preset optimized for Reggae music, emphasizing bass and low-mids with a relaxed feel.
+     * A preset optimized for Reggae music
      */
-    val Reggae = EqualizerValues("reggae", 1.9f, 0.7f, 0.8f, 1.0f, 2.0f)
+    val Reggae = EqualizerValues(identifier="reggae",frequencies=mapOf(20 to 0.7f,60 to 0.8f,125 to 0.9f,170 to 1.0f,250 to 0.7f,500 to 0.5f,1000 to 0.5f,2000 to 0.6f,3600 to 0.7f,8000 to 0.8f,16000 to 0.7f))
 
     /**
      * A preset optimized for Blues music, emphasizing vocals and guitars with a warm tone.
      */
-    val Blues = EqualizerValues("blues", 0.2f, 0.3f, 1.5f, 2.0f, 1.1f)
+    val Blues = EqualizerValues("blues", frequencies = mapOf(20 to 0.2f, 60 to 0.3f, 125 to 1.5f, 170 to 2.0f, 250 to 1.1f, 500 to 1.0f, 1000 to 1.0f, 2000 to 1.0f, 3600 to 1.0f, 8000 to 1.0f, 16000 to 1.0f))
 
     /**
      * A preset optimized for Metal music, emphasizing guitars and drums with high intensity.
      */
-    val Metal = EqualizerValues("metal", 2.0f, 0.8f, 0.7f, 0.5f, 2.2f)
+    val Metal = EqualizerValues("metal", frequencies = mapOf(20 to 2.0f, 60 to 0.8f, 125 to 0.7f, 170 to 0.5f, 250 to 2.2f, 500 to 1.0f, 1000 to 1.0f, 2000 to 1.0f, 3600 to 1.0f, 8000 to 1.0f, 16000 to 1.0f))
 
     /**
      * A preset optimized for Folk music, emphasizing vocals and acoustic instruments.
      */
-    val Folk = EqualizerValues("folk", 0.45f, 0.3f, 0.2f, 1.9f, 2.1f)
+    val Folk = EqualizerValues("folk", frequencies = mapOf(20 to 0.45f, 60 to 0.3f, 125 to 0.2f, 170 to 1.9f, 250 to 2.1f, 500 to 1.0f, 1000 to 1.0f, 2000 to 1.0f, 3600 to 1.0f, 8000 to 1.0f, 16000 to 1.0f))
 
     /**
      * A map containing all available equalizer presets, with their corresponding IDs as keys.

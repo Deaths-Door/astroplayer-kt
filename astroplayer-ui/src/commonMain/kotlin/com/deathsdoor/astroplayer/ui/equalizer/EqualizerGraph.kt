@@ -34,6 +34,7 @@ import com.deathsdoor.astroplayer.ui.states.EqualizerGraphState
 /**
  * A composable that represents the entire equalizer graph with multiple sliders.
  *
+ *
  * @param state An [EqualizerGraphState] object that holds the data for the equalizer.
  * @param slider A composable function that takes two arguments:
  *        * `bandLevel`: The index of the equalizer band (key in the `frequencies` map of the state).
@@ -43,6 +44,8 @@ import com.deathsdoor.astroplayer.ui.states.EqualizerGraphState
  * @param modifier Additional modifier to apply to the entire equalizer graph.
  * @param enabled Whether the equalizer is enabled or disabled. This affects the color of the sliders.
  * @param colors The color scheme to use for the sliders.
+ *
+ *
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -109,7 +109,7 @@ private fun DrawScope.drawGradientVeil(
             lineTo(cx,cy)
         }
 
-        val fx = (size.width - state.sliderThumbPositions.last().x)
+        val fx = (size.width - state.sliderThumbPositions.last().x).adjustXBasedOnThumbCentre(this@drawGradientVeil)
         lineTo(fx,size.height)
         close()
     }
@@ -148,3 +148,7 @@ private fun Offset.adjustBasedOnThumbCentre(
     val offsetCorrection = with(drawScope) { 10.dp.toPx() }
     return this.copy(this.x + offsetCorrection,this.y - offsetCorrection)
 }
+
+private fun Float.adjustXBasedOnThumbCentre(
+    drawScope: DrawScope
+): Float = this + with(drawScope) { 20.dp.toPx() }

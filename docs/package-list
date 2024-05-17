@@ -7,4 +7,6 @@ com.deathsdoor.astroplayer.core.equalizer
 com.deathsdoor.astroplayer.core.listeners
 module:astroplayer-ui
 com.deathsdoor.astroplayer.ui
+com.deathsdoor.astroplayer.ui.equalizer
 com.deathsdoor.astroplayer.ui.icons
+com.deathsdoor.astroplayer.ui.states
