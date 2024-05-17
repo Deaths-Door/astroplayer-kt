@@ -1,43 +1,39 @@
 package com.deathsdoor.astroplayer.ui
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.pager.PageSize.Fill.calculateMainAxisPageSize
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderColors
 import androidx.compose.material3.SliderDefaults
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathOperation
-import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.layout.positionInWindow
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Constraints
-import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.util.fastSumBy
 import com.deathsdoor.astroplayer.core.equalizer.EqualizerValues
 import kotlin.math.abs
 
@@ -48,7 +44,7 @@ import kotlin.math.abs
 fun EqualizerGraph(
     // unchanged by function
     equalizerValues: EqualizerValues,
-    modifier: Modifier = Modifier,
+    modifier : Modifier = Modifier,
     enabled : Boolean = true,
     colors: SliderColors = SliderDefaults.colors(),
 ) {
@@ -61,7 +57,8 @@ fun EqualizerGraph(
     val thumbPositions = remember { mutableStateListOf(Offset(0f,0f)) }
 
     Row(
-        modifier = modifier.drawConnectedGraph(
+        // THis is done so that padding.start can be used
+        modifier = Modifier.drawConnectedGraph(
             thumbPositions = thumbPositions,
             color = colors.awareThumbColor(enabled = enabled)
         ),
@@ -124,14 +121,22 @@ private fun Modifier.drawConnectedGraph(
     thumbPositions : SnapshotStateList<Offset>,
     color: Color
 ): Modifier = drawBehind {
-    createGradientVeilUnderConnectedThumbs(
+    val (gradient,brush) = createGradientVeil(
         thumbPositions = thumbPositions,
         color = color,
     )
 
-    connectThumbs(
-        thumbPositions = thumbPositions,
+    val (connectedThumbs,style) = createConnectedThumbs(thumbPositions = thumbPositions)
+
+    drawPath(
+        path = gradient,
+        brush = brush
+    )
+
+    drawPath(
+        path = connectedThumbs,
         color = color,
+        style = style,
     )
 }
 
@@ -144,19 +149,13 @@ private fun Offset.adjustBasedOnThumbCentre(drawScope: DrawScope): Offset {
     return this.copy(this.x + offsetCorrection,this.y - offsetCorrection)
 }
 
-
-private fun DrawScope.connectThumbs(
-    thumbPositions : SnapshotStateList<Offset>,
-    color: Color,
-) {
+private fun DrawScope.createConnectedThumbs(thumbPositions: SnapshotStateList<Offset>): Pair<Path, Stroke> {
     val connectedPoints = Path().apply {
-        reset()
-
-        val (ix,iy) = thumbPositions.first().adjustBasedOnThumbCentre(this@connectThumbs)
+        val (ix,iy) = thumbPositions.first().adjustBasedOnThumbCentre(this@createConnectedThumbs)
         moveTo(ix,iy)
 
         thumbPositions.subList(1,thumbPositions.size - 1).forEach {
-            val (cx,cy) = it.adjustBasedOnThumbCentre(this@connectThumbs)
+            val (cx,cy) = it.adjustBasedOnThumbCentre(this@createConnectedThumbs)
             lineTo(cx,cy)
         }
     }
@@ -165,28 +164,51 @@ private fun DrawScope.connectThumbs(
     val stokeWidth = 3.dp.toPx()
     val style = Stroke(width = stokeWidth)
 
-    drawPath(
-        path = connectedPoints,
-        color = color,
-        style = style,
-    )
+    return connectedPoints to style
 }
 
-private fun DrawScope.createGradientVeilUnderConnectedThumbs(
+private fun DrawScope.createGradientVeil(
     thumbPositions : SnapshotStateList<Offset>,
     color: Color,
-) {
-    val minimumX = thumbPositions.first().adjustBasedOnThumbCentre(this@createGradientVeilUnderConnectedThumbs).x
+): Pair<Path, Brush> {
+    val background = Path().apply {
+        val (ix,iy) = thumbPositions.first().adjustBasedOnThumbCentre(this@createGradientVeil)
+
+        moveTo(ix,size.height)
+        lineTo(ix,iy)
+
+        val lastIndex = thumbPositions.size - 1
+        thumbPositions.subList(1,lastIndex).forEach {
+            val (cx,cy) = it.adjustBasedOnThumbCentre(this@createGradientVeil)
+            lineTo(cx,cy)
+        }
+
+        val fx = (size.width - thumbPositions.last().x)
+        lineTo(fx,size.height)
+        close()
+    }
+
+    val brush = Brush.verticalGradient(
+        colorStops = arrayOf(
+            0.0f to color,
+            0.95f to Color.Transparent
+        )
+    )
+
+    return background to brush
+    /*val minimumX = thumbPositions.first().adjustBasedOnThumbCentre(this@createGradientVeil).x
     val maximumX = thumbPositions.sumOf { it.x.toDouble() }.toFloat()
-        .adjustXComponent(this@createGradientVeilUnderConnectedThumbs)
+        // Use this to ensure the end is inside the box created by the 2 lines instead of outside
+        .adjustYComponent(this@createGradientVeil)
 
     val maximumY = thumbPositions.maximumAbsoluteYPoint()
+        .adjustYComponent(this@createGradientVeil)
 
     val rect = Rect(
         left = minimumX,
         right = maximumX,
         top = size.height,
-        bottom = maximumY.adjustYComponent(this@createGradientVeilUnderConnectedThumbs),
+        bottom = 0f//maximumY
     )
 
     val background = Path().apply {
@@ -201,7 +223,7 @@ private fun DrawScope.createGradientVeilUnderConnectedThumbs(
         )
     )
 
-    drawPath(background,brush)
+    return background to brush*/
 }
 
 private fun SnapshotStateList<Offset>.maximumAbsoluteYPoint() : Float {
