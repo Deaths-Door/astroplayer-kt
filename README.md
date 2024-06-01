@@ -33,6 +33,20 @@ Detailed documentation can be found [here](https://deaths-door.github.io/astropl
 
 Once the core functionalities are thoroughly tested and stabilized, I plan to publish AstroPlayer to Maven Central for wider accessibility.
 
+**Publishing Locally to Maven Repository**
+
+To publish locally to your Maven repository, you can leverage the Gradle task *publishToMavenLocal* for the required modules 
+
+Or use this to publish all the modules to Maven Local
+
+```
+gradle astroplayer-core:publishToMavenLocal astroplayer-ui:publishToMavenLocal
+```
+
+
+
+By running these tasks, you'll deploy the respective modules to your local Maven repository, making them readily available for your project's development and testing purposes.
+
 **Installation:**
 
 AstroPlayer is published to Maven Central. To add it to your project, include the following dependencies in your `build.gradle` file:
