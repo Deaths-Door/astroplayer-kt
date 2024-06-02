@@ -16,7 +16,7 @@ AstroPlayer is an open-source media player designed for the Kotlin Multiplatform
 
 **Documentation:**
 
-Detailed documentation can be found [here](https://deaths-door.github.io/astroplayer-kt/).
+Detailed documentation regarding astroplayer can be found [here](https://deaths-door.github.io/astroplayer-kt/).
 
 ## Development Status
 
@@ -32,6 +32,20 @@ Detailed documentation can be found [here](https://deaths-door.github.io/astropl
 **Publishing to Maven Central:**
 
 Once the core functionalities are thoroughly tested and stabilized, I plan to publish AstroPlayer to Maven Central for wider accessibility.
+
+**Publishing Locally to Maven Repository**
+
+To publish locally to your Maven repository, you can leverage the Gradle task *publishToMavenLocal* for the required modules 
+
+Or use this to publish all the modules to Maven Local
+
+```
+gradle astroplayer-core:publishToMavenLocal astroplayer-ui:publishToMavenLocal
+```
+
+By running these tasks, you'll deploy the respective modules to your local Maven repository, making them readily available for your project's development and testing purposes.
+
+For comprehensive instructions, refer to the Gradle [documentation](https://docs.gradle.org/current/userguide/publishing_maven.html) on publishing to Maven repositories.
 
 **Installation:**
 
