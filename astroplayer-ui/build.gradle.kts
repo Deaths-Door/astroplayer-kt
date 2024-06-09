@@ -71,6 +71,14 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+    buildFeatures.compose = true
+    composeOptions.kotlinCompilerExtensionVersion = "1.5.8"
+
+    dependencies {
+        debugImplementation(compose.uiTooling)
+        implementation(compose.preview)
+    }
 }
 
 // Based on https://medium.com/kodein-koders/publish-a-kotlin-multiplatform-library-on-maven-central-6e8a394b7030
@@ -98,7 +106,7 @@ publishing {
         withType<MavenPublication> {
             pom {
                 groupId = "com.deathsdooor.astroplayer"
-                version = "0.1.1-SNAPSHOT"
+                version = libs.versions.project.library.get()
 
                 name.set("astroplayer-ui")
                 description.set("AstroPlayer is an open-source media player designed for the Kotlin Multiplatform. It provides a simple API for audio playback and supports multiple media formats while also providing an Jetpack Compose UI.")

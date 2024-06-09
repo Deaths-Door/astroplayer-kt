@@ -22,6 +22,9 @@ annotationJvm = "1.7.1"
 
 vlcj = "4.8.2"
 
+project-library="0.1.1.5-list-equalizer-SNAPSHOT"
+
+
 dokka = "1.9.20"
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }

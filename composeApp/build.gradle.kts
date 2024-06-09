@@ -60,13 +60,17 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
-            implementation(compose.material)
+            implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
 
-            implementation("com.deathsdooor.astroplayer:astroplayer-core:0.1.0")
-            implementation("com.deathsdooor.astroplayer:astroplayer-ui:0.1.0")
+
+            implementation(projects.astroplayerCore)
+            implementation(projects.astroplayerUi)
+
+            // implementation("com.deathsdooor.astroplayer:astroplayer-core:0.1.1-SNAPSHOT")
+            //implementation("com.deathsdooor.astroplayer:astroplayer-ui:0.1.1-SNAPSHOT")
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

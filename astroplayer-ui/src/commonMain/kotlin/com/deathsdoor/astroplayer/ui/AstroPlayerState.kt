@@ -4,6 +4,7 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import com.deathsdoor.astroplayer.core.AstroMediaItem
 import com.deathsdoor.astroplayer.core.AstroPlayer
 import com.deathsdoor.astroplayer.core.RepeatMode

@@ -23,24 +23,32 @@ package com.deathsdoor.astroplayer.core.equalizer
  *
  * @property identifier A unique identifier for this equalizer configuration. This ID might be used
  * by the AstroPlayer to match it with media items that have a specific equalizer preset setting.
- * @property hz60 The gain adjustment for the low-frequency band (around 60 Hz). This typically affects
- * the bass response. Positive values boost the bass, while negative values attenuate it.
- * @property hz230 The gain adjustment for the mid-low frequency band (around 230 Hz). This can affect
- * the body of instruments like guitars and cellos.
- * @property hz910 The gain adjustment for the mid-frequency band (around 910 Hz). This can affect
- * the clarity of vocals and lead instruments.
- * @property hz3600 The gain adjustment for the high-mid frequency band (around 3600 Hz). This can affect
- * the brightness and sibilance of instruments.
- * @property hz14000 The gain adjustment for the high-frequency band (around 14000 Hz). This typically affects
- * the detail and crispness of the sound.
+ * @property frequencies A map that defines the gain levels for different audio frequencies.
+ *     **Key:** The key represents the frequency in **Hertz (Hz)**.
+ *     **Value:** The value represents the gain level for that frequency. It should be a float value
+ *       between **0.0 (silent)** and **1.0 (maximum gain)**.
  */
 data class EqualizerValues(
     val identifier : String,
-    val hz60 : Float,
-    val hz230 : Float,
-    val hz910 : Float,
-    val hz3600 : Float,
-    val hz14000 : Float
-) : Iterable<Float> {
-    override fun iterator(): Iterator<Float> = listOf(hz60,hz230,hz910,hz3600,hz14000).iterator()
+    val frequencies: Map<Int, Float>
+) : Iterable<Map.Entry<Int,Float>> {
+    constructor(
+        identifier : String,
+        hz60 : Float,
+        hz230 : Float,
+        hz910 : Float,
+        hz3600 : Float,
+        hz14000 : Float
+    ) : this(
+        identifier,
+        mapOf(
+            60 to hz60,
+            230 to hz230,
+            910 to hz910,
+            3600 to hz3600,
+            14000 to hz14000
+        )
+    )
+
+    override fun iterator(): Iterator<Map.Entry<Int,Float>> = frequencies.iterator()
 }
