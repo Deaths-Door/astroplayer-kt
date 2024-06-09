@@ -20,7 +20,7 @@ actual typealias NativeMediaPLayer = Howl
  * and the [AstroPlayer] implementation.
  */
 @Suppress("UNUSED")
-actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: NativeMediaPLayer) {
+actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: NativeMediaPLayer): List<AstroMediaItem> {
     /** Prepares the player for playback. This might involve buffering the media stream.**/
     actual open fun prepare() = Unit
 
@@ -473,5 +473,20 @@ actual open class AstroPlayer actual constructor(private var nativeMediaPlayer: 
     }
 
 
-    actual companion object
+    actual companion object{}
+
+    // -- List + Mutable List
+    override val size: Int get()= astroMediaItems.size
+
+    override fun contains(element: AstroMediaItem): Boolean = astroMediaItems.any { it.first == element }
+    override fun containsAll(elements: Collection<AstroMediaItem>): Boolean = elements.all { contains(it) }
+    override fun get(index: Int): AstroMediaItem = astroMediaItems[index].first
+    override fun indexOf(element: AstroMediaItem): Int = astroMediaItems.indexOfFirst { it.first == element }
+    override fun isEmpty(): Boolean = astroMediaItems.isEmpty()
+    override fun iterator(): Iterator<AstroMediaItem> = astroMediaItems.map { it.first }.iterator()
+    override fun lastIndexOf(element: AstroMediaItem): Int = astroMediaItems.indexOfLast { it.first == element }
+    override fun listIterator(): ListIterator<AstroMediaItem> = astroMediaItems.map { it.first }.listIterator()
+    override fun listIterator(index: Int): ListIterator<AstroMediaItem> = astroMediaItems.map { it.first }.listIterator(index)
+    override fun subList(fromIndex: Int, toIndex: Int): List<AstroMediaItem> = astroMediaItems.map { it.first }.subList(fromIndex, toIndex)
+    override fun toString(): String = astroMediaItems.toString()
 }

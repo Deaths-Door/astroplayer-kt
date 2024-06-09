@@ -125,7 +125,7 @@ publishing {
         withType<MavenPublication> {
             pom {
                 groupId = "com.deathsdooor.astroplayer"
-                version = "0.1.1.1-equalizer-SNAPSHOT"
+                version = libs.versions.project.library.get()
 
                 name.set("astroplayer-core")
                 description.set("AstroPlayer is an open-source media player designed for the Kotlin Multiplatform. It provides a simple API for audio playback and supports multiple media formats while also providing an Jetpack Compose UI.")

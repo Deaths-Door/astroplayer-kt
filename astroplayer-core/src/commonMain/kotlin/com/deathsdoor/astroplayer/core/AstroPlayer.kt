@@ -23,14 +23,14 @@ expect class NativeMediaPLayer
  * and the [AstroPlayer] implementation.
  */
 @Suppress("UNUSED")
-expect open class AstroPlayer constructor(nativeMediaPlayer : NativeMediaPLayer) {
+expect open class AstroPlayer constructor(nativeMediaPlayer : NativeMediaPLayer) : List<AstroMediaItem> {
     /** Prepares the player for playback. This might involve buffering the media stream.**/
-    open fun  prepare()
+    open fun prepare()
 
     /**
      * Releases the player resources. This should be called when the player is no longer needed.
      */
-    open fun  release()
+    open fun release()
 
     /**
      * Starts playback of the current media item.

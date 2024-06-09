@@ -11,6 +11,7 @@ import androidx.media3.common.Player
 import androidx.media3.common.Player.MEDIA_ITEM_TRANSITION_REASON_REPEAT
 import androidx.media3.common.Player.STATE_BUFFERING
 import androidx.media3.common.util.UnstableApi
+import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.session.MediaController
 import androidx.media3.session.MediaSessionService
 import androidx.media3.session.SessionToken
@@ -21,50 +22,51 @@ import com.google.common.util.concurrent.ListenableFuture
 import com.google.common.util.concurrent.MoreExecutors
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlin.reflect.KClass
 
-actual typealias NativeMediaPLayer = MediaController
+actual class NativeMediaPLayer(val player: Player)
 
 @Suppress("UNUSED")
-actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: NativeMediaPLayer) {
+actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: NativeMediaPLayer) : List<AstroMediaItem> {
     /**
      * Prepares the media player for playback.
      *
-     * This method delegates the call to the underlying `NativeMediaPlayer.prepare()`. Refer to the
+     * This method delegates the call to the underlying `nativeMediaPlayer.player.prepare()`. Refer to the
      * documentation of that method for specific details on its behavior and requirements.
      */
-    actual open fun prepare() = nativeMediaPlayer.prepare()
+    actual open fun prepare() = nativeMediaPlayer.player.prepare()
 
     /**
      * Releases the resources associated with the media player.
      *
-     * This method delegates the call to the underlying `NativeMediaPlayer.release()`. Refer to the
+     * This method delegates the call to the underlying `nativeMediaPlayer.player.release()`. Refer to the
      * documentation of that method for details on resource management and proper cleanup.
      */
-    actual open fun release() = nativeMediaPlayer.release()
+    actual open fun release() = nativeMediaPlayer.player.release()
 
     /**
      * Starts playback of the media.
      *
-     * This method delegates the call to the underlying `NativeMediaPlayer.play()`. Refer to the
+     * This method delegates the call to the underlying `nativeMediaPlayer.player.play()`. Refer to the
      * documentation of that method for details on playback behavior and potential errors.
      */
-    actual open fun play() = nativeMediaPlayer.play()
+    actual open fun play() = nativeMediaPlayer.player.play()
 
     /**
      * Pauses playback of the media.
      *
-     * This method delegates the call to the underlying `NativeMediaPlayer.pause()`. Refer to the
+     * This method delegates the call to the underlying `nativeMediaPlayer.player.pause()`. Refer to the
      * documentation of that method for details on pausing behavior and resuming playback.
      */
-    actual open fun pause() = nativeMediaPlayer.pause()
+    actual open fun pause() = nativeMediaPlayer.player.pause()
 
     /**
      * Indicates whether the media is currently playing.
      *
-     * This property delegates the check to the underlying `NativeMediaPlayer.isPlaying`. Refer to the
+     * This property delegates the check to the underlying `nativeMediaPlayer.player.isPlaying`. Refer to the
      * documentation of that property for details on how it determines the playback state.
      */
-    actual open val isPlaying: Boolean get() = nativeMediaPlayer.isPlaying
+    actual open val isPlaying: Boolean get() = nativeMediaPlayer.player.isPlaying
 
     /**
      * Indicates whether the media is currently paused.
@@ -72,18 +74,18 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
      * This property is a combination of checks on the underlying `NativeMediaPlayer` state. It considers
      * both `playWhenReady` and `isPlaying` flags to determine if playback is truly paused.
      */
-    actual open val isPaused: Boolean get() = !nativeMediaPlayer.playWhenReady && !nativeMediaPlayer.isPlaying
+    actual open val isPaused: Boolean get() = !nativeMediaPlayer.player.playWhenReady && !nativeMediaPlayer.player.isPlaying
 
     /**
      * Sets the playback speed of the media.
      *
-     * This property delegates the setting to the underlying `NativeMediaPlayer.setPlaybackSpeed(value)`.
+     * This property delegates the setting to the underlying `nativeMediaPlayer.player.setPlaybackSpeed(value)`.
      * Refer to the documentation of that method for details on supported speed values and behavior.
      */
     actual open var playBackSpeed: Float = 1f
         set(value){
             field = value
-            nativeMediaPlayer.setPlaybackSpeed(field)
+            nativeMediaPlayer.player.setPlaybackSpeed(field)
         }
 
     /**
@@ -95,9 +97,9 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
      * repeat behavior options.
      */
     actual open var repeatMode: RepeatMode
-        get() = nativeMediaPlayer.repeatMode.toRepeatMode()
+        get() = nativeMediaPlayer.player.repeatMode.toRepeatMode()
         set(value) {
-            nativeMediaPlayer.repeatMode = value.toPlayerRepeatMode()
+            nativeMediaPlayer.player.repeatMode = value.toPlayerRepeatMode()
         }
 
     /**
@@ -108,144 +110,144 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
      * of that property for details on shuffle mode behavior.
      */
     actual open var shuffleModeEnabled : Boolean
-        get() = nativeMediaPlayer.shuffleModeEnabled
+        get() = nativeMediaPlayer.player.shuffleModeEnabled
         set(value) {
-            nativeMediaPlayer.shuffleModeEnabled = value
+            nativeMediaPlayer.player.shuffleModeEnabled = value
         }
 
     /**
      * Gets the current volume level of the media player.
      *
-     * This property delegates the retrieval to the underlying `NativeMediaPlayer.volume`. Refer to the
+     * This property delegates the retrieval to the underlying `nativeMediaPlayer.player.volume`. Refer to the
      * documentation of that property for details on how the volume level is represented.
      */
-    actual open val volume: Float get() = nativeMediaPlayer.volume
+    actual open val volume: Float get() = nativeMediaPlayer.player.volume
 
     /**
      * Increases the device volume for media playback. (Deprecated)
      *
-     * This method delegates the call to the underlying `NativeMediaPlayer.increaseDeviceVolume()`. This method
+     * This method delegates the call to the underlying `nativeMediaPlayer.player.increaseDeviceVolume()`. This method
      * is deprecated as it directly controls device volume, which might not be ideal for all use cases.
      * Consider using alternative approaches for volume control within your application.
      */
     @Suppress("DEPRECATION")
-    actual open fun increaseVolume() = nativeMediaPlayer.increaseDeviceVolume()
+    actual open fun increaseVolume() = nativeMediaPlayer.player.increaseDeviceVolume()
 
     /**
      * Decreases the device volume for media playback. (Deprecated)
      *
-     * This method delegates the call to the underlying `NativeMediaPlayer.decreaseDeviceVolume()`. This method
+     * This method delegates the call to the underlying `nativeMediaPlayer.player.decreaseDeviceVolume()`. This method
      * is deprecated as it directly controls device volume, which might not be ideal for all use cases.
      * Consider using alternative approaches for volume control within your application.
      */
     @Suppress("DEPRECATION")
-    actual open fun decreaseVolume() = nativeMediaPlayer.decreaseDeviceVolume()
+    actual open fun decreaseVolume() = nativeMediaPlayer.player.decreaseDeviceVolume()
 
     /**
      * Increases the media player's volume by a specified offset.
      *
      * This method adjusts the internal volume level of the `NativeMediaPlayer` by adding the provided `offset`
-     * (between 0.0 and 1.0). Refer to the documentation of `NativeMediaPlayer.volume` for details on how the
+     * (between 0.0 and 1.0). Refer to the documentation of `nativeMediaPlayer.player.volume` for details on how the
      * volume level is represented.
      *
      * @param offset The amount by which to increase the volume (between 0.0 and 1.0).
      */
     actual open fun increaseVolumeBy(@FloatRange(from = 0.0, to = 1.0) offset: Float) {
-        nativeMediaPlayer.volume += offset
+        nativeMediaPlayer.player.volume += offset
     }
 
     /**
      * Decreases the media player's volume by a specified offset.
      *
      * This method adjusts the internal volume level of the `NativeMediaPlayer` by subtracting the provided `offset`
-     * (between 0.0 and 1.0). Refer to the documentation of `NativeMediaPlayer.volume` for details on how the
+     * (between 0.0 and 1.0). Refer to the documentation of `nativeMediaPlayer.player.volume` for details on how the
      * volume level is represented.
      *
      * @param offset The amount by which to decrease the volume (between 0.0 and 1.0).
      */
     actual open fun decreaseVolumeBy(@FloatRange(from = 0.0, to = 1.0) offset: Float) {
-        nativeMediaPlayer.volume -= offset
+        nativeMediaPlayer.player.volume -= offset
     }
 
     /**
      * Indicates whether the device's audio output is muted.
      *
-     * This property delegates the check to the underlying `NativeMediaPlayer.isDeviceMuted`. It reflects the
+     * This property delegates the check to the underlying `nativeMediaPlayer.player.isDeviceMuted`. It reflects the
      * overall device mute state, not just the media player's specific volume.
      */
-    actual open val isMuted: Boolean get() = nativeMediaPlayer.isDeviceMuted
+    actual open val isMuted: Boolean get() = nativeMediaPlayer.player.isDeviceMuted
 
     /**
      * Mutes the device's audio output for media playback. (Deprecated)
      *
-     * This method delegates the call to the underlying `NativeMediaPlayer.setDeviceMuted(true)`. This method
+     * This method delegates the call to the underlying `nativeMediaPlayer.player.setDeviceMuted(true)`. This method
      * is deprecated as it directly controls device audio output, which might not be ideal for all use cases.
      * Consider using alternative approaches for audio muting within your application.
      */
     @Suppress("DEPRECATION")
-    actual open fun mute() = nativeMediaPlayer.setDeviceMuted(true)
+    actual open fun mute() = nativeMediaPlayer.player.setDeviceMuted(true)
 
     /**
      * Unmutes the device's audio output for media playback. (Deprecated)
      *
-     * This method delegates the call to the underlying `NativeMediaPlayer.setDeviceMuted(false)`. This method
+     * This method delegates the call to the underlying `nativeMediaPlayer.player.setDeviceMuted(false)`. This method
      * is deprecated as it directly controls device audio output, which might not be ideal for all use cases.
      * Consider using alternative approaches for audio muting within your application.
      */
     @Suppress("DEPRECATION")
-    actual open fun unMute() = nativeMediaPlayer.setDeviceMuted(false)
+    actual open fun unMute() = nativeMediaPlayer.player.setDeviceMuted(false)
 
     /**
      * Gets the default seek backward increment value in milliseconds.
      *
-     * This property delegates the retrieval to the underlying `NativeMediaPlayer.seekBackIncrement`. This value
+     * This property delegates the retrieval to the underlying `nativeMediaPlayer.player.seekBackIncrement`. This value
      * determines the amount by which the playback position is moved backward when using `seekBackwardBy` or
      * similar methods.
      */
-    actual open val seekBackIncrement: Long get() = nativeMediaPlayer.seekBackIncrement
+    actual open val seekBackIncrement: Long get() = nativeMediaPlayer.player.seekBackIncrement
 
     /**
      * Gets the default seek forward increment value in milliseconds.
      *
-     * This property delegates the retrieval to the underlying `NativeMediaPlayer.seekForwardIncrement`. This value
+     * This property delegates the retrieval to the underlying `nativeMediaPlayer.player.seekForwardIncrement`. This value
      * determines the amount by which the playback position is moved forward when using `seekForwardBy` or
      * similar methods.
      */
-    actual open val seekForwardIncrement: Long get() = nativeMediaPlayer.seekForwardIncrement
+    actual open val seekForwardIncrement: Long get() = nativeMediaPlayer.player.seekForwardIncrement
 
     /**
      * Seeks the playback position to a specific time in milliseconds.
      *
-     * This method delegates the call to the underlying `NativeMediaPlayer.seekTo(milliseconds)`. Refer to the
+     * This method delegates the call to the underlying `nativeMediaPlayer.player.seekTo(milliseconds)`. Refer to the
      * documentation of that method for details on supported seek behavior and potential limitations.
      *
      * @param milliseconds The target position within the media item in milliseconds.
      */
-    actual open fun seekTo(milliseconds: Long) = nativeMediaPlayer.seekTo(milliseconds)
+    actual open fun seekTo(milliseconds: Long) = nativeMediaPlayer.player.seekTo(milliseconds)
 
     /**
      * Seeks the playback position to the beginning of the media item at a specific index in the playlist.
      *
-     * This method delegates the call to `nativeMediaPlayer.seekTo(index, 0)`. It seeks to the specified
+     * This method delegates the call to `nativeMediaPlayer.player.seekTo(index, 0)`. It seeks to the specified
      * `index` in the playlist and then sets the position within that media item to 0 milliseconds.
      */
-    actual open fun seekToMediaItem(index : Int) = nativeMediaPlayer.seekTo(index,0)
+    actual open fun seekToMediaItem(index : Int) = nativeMediaPlayer.player.seekTo(index,0)
 
     /**
      * Gets the current playback position within the media item in milliseconds.
      *
-     * This property delegates the retrieval to the underlying `NativeMediaPlayer.currentPosition`. It reflects the
+     * This property delegates the retrieval to the underlying `nativeMediaPlayer.player.currentPosition`. It reflects the
      * current point in time where playback is happening.
      */
-    actual open val currentPosition: Long get() = nativeMediaPlayer.currentPosition
+    actual open val currentPosition: Long get() = nativeMediaPlayer.player.currentPosition
 
     /**
      * Gets the total duration of the currently playing media item in milliseconds.
      *
-     * This property delegates the retrieval to the underlying `NativeMediaPlayer.contentDuration`. It reflects
+     * This property delegates the retrieval to the underlying `nativeMediaPlayer.player.contentDuration`. It reflects
      * the overall length of the media content.
      */
-    actual open val contentDuration: Long get() = nativeMediaPlayer.contentDuration
+    actual open val contentDuration: Long get() = nativeMediaPlayer.player.contentDuration
 
     /**
      * (Internal Visible) A custom deserialization function used to convert data from the underlying [androidx.media3.common.MediaMetadata]
@@ -271,30 +273,30 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
      *  Gets the currently playing native media item ([MediaItem]) in the underlying [NativeMediaPLayer] representation.
      */
     @Suppress("MemberVisibilityCanBePrivate")
-    val currentNativeMediaItem: MediaItem? get() = nativeMediaPlayer.currentMediaItem
+    val currentNativeMediaItem: MediaItem? get() = nativeMediaPlayer.player.currentMediaItem
 
     /**
      * Gets the index of the currently playing media item within the playlist.
      *
-     * This property delegates the retrieval to the underlying `nativeMediaPLayer.currentMediaItemIndex`. It reflects
+     * This property delegates the retrieval to the underlying `nativeMediaPlayer.player.currentMediaItemIndex`. It reflects
      * the zero-based index of the media item that is currently playing in the playlist.
      */
-    actual open val currentMediaItemIndex: Int get() = nativeMediaPlayer.currentMediaItemIndex
+    actual open val currentMediaItemIndex: Int get() = nativeMediaPlayer.player.currentMediaItemIndex
     /**
      * Gets the total number of media items in the playlist.
      *
-     * This property delegates the retrieval to the underlying `NativeMediaPlayer.mediaItemCount`. It reflects the
+     * This property delegates the retrieval to the underlying `nativeMediaPlayer.player.mediaItemCount`. It reflects the
      * total number of media items currently loaded into the playlist.
      */
-    actual open val mediaItemCount: Int get() = nativeMediaPlayer.mediaItemCount
+    actual open val mediaItemCount: Int get() = nativeMediaPlayer.player.mediaItemCount
 
     /**
      * Clears all media items from the playlist.
      *
-     * This method delegates the call to the underlying `NativeMediaPlayer.clearMediaItems()`. It removes all
+     * This method delegates the call to the underlying `nativeMediaPlayer.player.clearMediaItems()`. It removes all
      * media items that were previously added to the playlist.
      */
-    actual open fun clearMediaItems() = nativeMediaPlayer.clearMediaItems()
+    actual open fun clearMediaItems() = nativeMediaPlayer.player.clearMediaItems()
 
     /**
      * Adds a single media item to the playlist.
@@ -305,7 +307,7 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
      *
      * @param item The `AstroMediaItem` object representing the media content to be added.
      */
-    actual open fun addMediaItem(item: AstroMediaItem) = nativeMediaPlayer.addMediaItem(item.asNativeMediaItem())
+    actual open fun addMediaItem(item: AstroMediaItem) = nativeMediaPlayer.player.addMediaItem(item.asNativeMediaItem())
 
     /**
      * Adds a single media item to the playlist at a specific index.
@@ -321,7 +323,7 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
     actual open fun addMediaItem(
         index: Int,
         item: AstroMediaItem,
-    ) = nativeMediaPlayer.addMediaItem(index,item.asNativeMediaItem())
+    ) = nativeMediaPlayer.player.addMediaItem(index,item.asNativeMediaItem())
 
     /**
      * Adds a list of media items to the playlist.
@@ -333,7 +335,7 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
      *
      * @param items A list of `AstroMediaItem` objects representing the media content to be added.
      */
-    actual open fun addMediaItems(items: List<AstroMediaItem>) = nativeMediaPlayer.addMediaItems(items.map { it.asNativeMediaItem() })
+    actual open fun addMediaItems(items: List<AstroMediaItem>) = nativeMediaPlayer.player.addMediaItems(items.map { it.asNativeMediaItem() })
 
     /**
      * Adds a list of media items to the playlist at a specific index.
@@ -349,7 +351,7 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
     actual open fun addMediaItems(
         index: Int,
         items: List<AstroMediaItem>,
-    ) = nativeMediaPlayer.addMediaItems(index,items.map { it.asNativeMediaItem() })
+    ) = nativeMediaPlayer.player.addMediaItems(index,items.map { it.asNativeMediaItem() })
 
     /**
      * Moves a single media item within the playlist to a new position.
@@ -360,7 +362,7 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
      * @param currentIndex The zero-based index of the media item to be moved.
      * @param newIndex The zero-based index at which to insert the moved media item.
      */
-    actual open fun moveMediaItem(currentIndex: Int, newIndex: Int) = nativeMediaPlayer.moveMediaItem(currentIndex, newIndex)
+    actual open fun moveMediaItem(currentIndex: Int, newIndex: Int) = nativeMediaPlayer.player.moveMediaItem(currentIndex, newIndex)
     /**
      * Moves a range of media items within the playlist to a new position.
      *
@@ -376,7 +378,7 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
         fromIndex: Int,
         toIndex: Int,
         newIndex: Int,
-    )  = nativeMediaPlayer.moveMediaItems(fromIndex,toIndex,newIndex)
+    )  = nativeMediaPlayer.player.moveMediaItems(fromIndex,toIndex,newIndex)
 
     /**
      * Removes a single media item from the playlist at a specific index.
@@ -386,7 +388,7 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
      *
      * @param index The zero-based index of the media item to be removed.
      */
-    actual open fun removeMediaItem(index: Int)  = nativeMediaPlayer.removeMediaItem(index)
+    actual open fun removeMediaItem(index: Int)  = nativeMediaPlayer.player.removeMediaItem(index)
 
     /**
      * Removes a range of media items from the playlist.
@@ -397,7 +399,7 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
      * @param fromIndex The zero-based index of the first item in the range to be removed.
      * @param toIndex The zero-based index of the last item in the range to be removed (inclusive).
      */
-    actual open fun removeMediaItems(fromIndex: Int, toIndex: Int)  = nativeMediaPlayer.removeMediaItems(fromIndex, toIndex)
+    actual open fun removeMediaItems(fromIndex: Int, toIndex: Int)  = nativeMediaPlayer.player.removeMediaItems(fromIndex, toIndex)
 
     /** Replaces a single media item in the playlist at a specific index with a new item.
      *
@@ -412,7 +414,7 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
     actual open fun replaceMediaItem(
         index: Int,
         mediaItem: AstroMediaItem,
-    )  = nativeMediaPlayer.replaceMediaItem(index, mediaItem.asNativeMediaItem())
+    )  = nativeMediaPlayer.player.replaceMediaItem(index, mediaItem.asNativeMediaItem())
 
     /**
      * Replaces a range of media items in the playlist with a new list of items.
@@ -430,9 +432,9 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
         fromIndex: Int,
         toIndex: Int,
         mediaItems: List<AstroMediaItem>,
-    ) = nativeMediaPlayer.replaceMediaItems(fromIndex,toIndex,mediaItems.map { it.asNativeMediaItem() })
+    ) = nativeMediaPlayer.player.replaceMediaItems(fromIndex,toIndex,mediaItems.map { it.asNativeMediaItem() })
 
-    private inline val NativeMediaPLayer.mediaItemsRange get() = 0 until mediaItemCount
+    private inline val Player.mediaItemsRange get() = 0 until mediaItemCount
 
     /**
      * Gets a list of all media items currently in the playlist.
@@ -449,8 +451,8 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
      *
      * This method takes a lambda function `transform` as input. The `transform` function takes an `AstroMediaItem`
      * object as input and returns a value of type `T`. The method iterates through all media items in the
-     * playlist using `nativeMediaPlayer.mediaItemsRange`. For each index in the range:
-    - It retrieves the media item at that index using `nativeMediaPlayer.getMediaItemAt(index)`.
+     * playlist using `nativeMediaPlayer.player.mediaItemsRange`. For each index in the range:
+    - It retrieves the media item at that index using `nativeMediaPlayer.player.getMediaItemAt(index)`.
     - It converts the retrieved media item to an `AstroMediaItem` object using `asAstroMediaItem(mapExtras)`.
     - If the conversion is successful (i.e., the item is not null), the `transform` function is applied
     to the converted `AstroMediaItem` and the transformed value is added to the result list.
@@ -463,8 +465,8 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
      * @param transform A lambda function that takes an `AstroMediaItem` object as input and returns a value of type `T`.
      * @return A list containing the transformed results for each media item in the playlist, or an empty list if no items exist.
      */
-    actual open fun <T> mapMediaItems(transform: (AstroMediaItem) -> T) : List<T> = nativeMediaPlayer.mediaItemsRange.mapNotNull { index ->
-        nativeMediaPlayer.getMediaItemAt(index).asAstroMediaItem(mapExtras)?.let { item -> transform(item) }
+    actual open fun <T> mapMediaItems(transform: (AstroMediaItem) -> T) : List<T> = nativeMediaPlayer.player.mediaItemsRange.mapNotNull { index ->
+        mapNativeMediaItemIndex(index)?.let { item -> transform(item) }
     }
 
     /**
@@ -482,8 +484,8 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
     * @param transform A lambda function that takes a `MediaItem` object (native representation) as input and returns a value of type `T`.
     * @return A list containing the transformed results for each media item in the playlist using the native format, or an empty list if no items exist.
     */
-    fun<T> mapNativeMediaItems(transform: (MediaItem) -> T) =   nativeMediaPlayer.mediaItemsRange.map {
-        transform(nativeMediaPlayer.getMediaItemAt(it))
+    fun<T> mapNativeMediaItems(transform: (MediaItem) -> T) = nativeMediaPlayer.player.mediaItemsRange.map {
+        transform(nativeMediaPlayer.player.getMediaItemAt(it))
     }
 
     private val _equalizerLock = Any()
@@ -511,7 +513,7 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
                     else -> {
                         isSmartEqualizerEnabled = false
 
-                        nativeMediaPlayer.removeListener(_equalizerListener!!)
+                        nativeMediaPlayer.player.removeListener(_equalizerListener!!)
                         _equalizerListener = null
 
                         _equalizer!!.release()
@@ -570,12 +572,12 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
                             }
                         }
 
-                        nativeMediaPlayer.addListener(_equalizerListener!!)
+                        nativeMediaPlayer.player.addListener(_equalizerListener!!)
                     }
                 }
 
                 false -> synchronized(_equalizerLock) {
-                    nativeMediaPlayer.removeListener(_equalizerSmartListener!!)
+                    nativeMediaPlayer.player.removeListener(_equalizerSmartListener!!)
                     _equalizerSmartListener = null
                 }
             }
@@ -595,7 +597,7 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
 
                 if(events.contains(Player.EVENT_PLAYER_ERROR)) {
                     closures.add {
-                        it.onPlaybackError(this@AstroPlayer.nativeMediaPlayer.playerError!!)
+                        it.onPlaybackError(this@AstroPlayer.nativeMediaPlayer.player.playerError!!)
                     }
                 }
 
@@ -615,7 +617,7 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
                     }
                 }
 
-                if(events.contains(Player.EVENT_PLAYBACK_STATE_CHANGED) && nativeMediaPlayer.playbackState == STATE_BUFFERING) {
+                if(events.contains(Player.EVENT_PLAYBACK_STATE_CHANGED) && nativeMediaPlayer.player.playbackState == STATE_BUFFERING) {
                     closures.add { it.onMediaItemBuffering() }
                 }
 
@@ -670,11 +672,11 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
             }
         }
 
-        nativeMediaPlayer.addListener(astroNativeListener!!)
+        nativeMediaPlayer.player.addListener(astroNativeListener!!)
     }
 
     internal actual fun deregisterNativeListenerForAstro() {
-        nativeMediaPlayer.removeListener(astroNativeListener!!)
+        nativeMediaPlayer.player.removeListener(astroNativeListener!!)
         astroNativeListener = null
     }
 
@@ -693,28 +695,36 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
          * @param customize An optional lambda function to customize the [MediaController.Builder] (default: empty lambda).
          * @return A [ListenableFuture] object representing the asynchronous creation of the [MediaController].
          */
-        fun createFrom(context: Context,sessionService: MediaSessionService,customize: MediaController.Builder.() -> MediaController.Builder = { this }): ListenableFuture<MediaController> {
+        fun createFrom(context: Context,sessionService : KClass<MediaSessionService>,customize: MediaController.Builder.() -> MediaController.Builder = { this }): ListenableFuture<MediaController> {
             val sessionToken = SessionToken(context, ComponentName(context, sessionService::class.java))
             val controllerFuture = MediaController.Builder(context, sessionToken).customize().buildAsync()
             controllerFuture.addListener({ controllerFuture.get().prepare() }, MoreExecutors.directExecutor())
             return controllerFuture
         }
-
-
-        /**
-         * Creates an `AstroPlayer` instance asynchronously from a `ListenableFuture<NativeMediaPlayer>`.
-         *
-         * This suspend function creates an `AstroPlayer` object by waiting for a `ListenableFuture<NativeMediaPlayer>`
-         * to complete and then using the retrieved `NativeMediaPlayer` to construct the `AstroPlayer` instance.
-         * The operation is executed within a coroutine context using `Dispatchers.IO`, which is suitable for I/O
-         * bound operations.
-         *
-         * @param nativeMediaPlayer A `ListenableFuture<NativeMediaPlayer>` object representing the asynchronous retrieval
-         *                          of the underlying `NativeMediaPlayer`.
-         * @return An `AstroPlayer` instance created using the provided `NativeMediaPlayer`.
-         */
-        suspend fun createFrom(nativeMediaPlayer: ListenableFuture<NativeMediaPLayer>) = withContext(Dispatchers.IO) {
-            AstroPlayer(nativeMediaPlayer.get())
-        }
     }
+    
+    private fun mapNativeMediaItemIndex(index : Int) = nativeMediaPlayer.player.getMediaItemAt(index).asAstroMediaItem(mapExtras)
+
+    // -- List + Mutable List
+    override val size: Int get() = mediaItemCount
+    override fun isEmpty(): Boolean = mediaItemCount == 0
+
+    override fun contains(element: AstroMediaItem): Boolean = nativeMediaPlayer.player.mediaItemsRange.any {
+        mapNativeMediaItemIndex(it) == element
+    }
+
+    override fun containsAll(elements: Collection<AstroMediaItem>): Boolean = allMediaItems().containsAll(elements)
+    override fun get(index: Int): AstroMediaItem = mapNativeMediaItemIndex(index) ?: error("this should be unreachable mostly")
+    override fun indexOf(element: AstroMediaItem): Int =  nativeMediaPlayer.player.mediaItemsRange.indexOfFirst { index ->
+        mapNativeMediaItemIndex(index) == element
+    }
+
+    override fun lastIndexOf(element: AstroMediaItem): Int = nativeMediaPlayer.player.mediaItemsRange.indexOfLast { index ->
+        mapNativeMediaItemIndex(index) == element
+    }
+
+    override fun iterator(): Iterator<AstroMediaItem> = allMediaItems().iterator()
+    override fun listIterator(): ListIterator<AstroMediaItem> = allMediaItems().listIterator()
+    override fun listIterator(index: Int): ListIterator<AstroMediaItem> = allMediaItems().listIterator(index)
+    override fun subList(fromIndex: Int, toIndex: Int): List<AstroMediaItem> = allMediaItems().subList(fromIndex, toIndex)
 }

@@ -12,14 +12,16 @@ import uk.co.caprica.vlcj.media.Meta
 import uk.co.caprica.vlcj.player.base.Equalizer
 import uk.co.caprica.vlcj.player.base.MediaPlayer
 import uk.co.caprica.vlcj.player.base.MediaPlayerEventAdapter
+import uk.co.caprica.vlcj.player.component.AudioListPlayerComponent
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent
 import java.lang.Exception
 import java.util.Collections
 
-actual typealias NativeMediaPLayer = EmbeddedMediaListPlayerComponent
+actual typealias NativeMediaPLayer = AudioListPlayerComponent
 
+//TODO;make it private again
 @Suppress("UNUSED")
-actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: NativeMediaPLayer) {
+actual open class AstroPlayer actual constructor(val nativeMediaPlayer: NativeMediaPLayer) : List<AstroMediaItem> {
     init {
         NativeDiscovery().discover()
     }
@@ -32,7 +34,9 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
     actual open fun pause() = _nativeMediaPlayer.controls().pause()
 
     actual open val isPlaying: Boolean get() = _nativeMediaPlayer.status().isPlaying
-    actual open val isPaused: Boolean get() = !_nativeMediaPlayer.status().isPlaying && _nativeMediaPlayer.media().info().audioTracks().size >= 1
+    actual open val isPaused: Boolean get() = !isPlaying && _nativeMediaPlayer.media().info()?.let {
+        it.audioTracks().size >= 1
+    } ?: false
     actual open var playBackSpeed: Float
         get() = _nativeMediaPlayer.status().rate()
         set(value) {
@@ -116,7 +120,9 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
             }
         }
 
-        nativePlaylistManager.media().add(mediaItem.newMediaRef())
+        mediaItem?.newMediaRef()?.let {
+            nativePlaylistManager.media().add(it)
+        }
     }
 
     actual open fun addMediaItem(
@@ -314,6 +320,13 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
                 forEachListener { it.onPlaybackError(Exception("Can't get error for desktop")) }
             }
 
+            override fun mediaChanged(mediaPlayer: MediaPlayer?, media: MediaRef?) {
+                super.mediaChanged(mediaPlayer, media)
+
+                currentMediaItem
+
+            }
+
             // TODO: onCurrentMediaItemChanged -> Can't detect on Mediaitem changed
             override fun forward(mediaPlayer: MediaPlayer?) {
                 super.forward(mediaPlayer)
@@ -350,6 +363,22 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
     internal actual fun deregisterNativeListenerForAstro() {
         nativeMediaPlayer.mediaPlayer().events().removeMediaPlayerEventListener(astroNativeListener)
     }
+    actual companion object{}
+    
+    
+    // -- List + Mutable List
+    override val size: Int get()= astroMediaItems.size
 
-    actual companion object
+    override fun contains(element: AstroMediaItem): Boolean = astroMediaItems.contains(element)
+    override fun containsAll(elements: Collection<AstroMediaItem>): Boolean = astroMediaItems.containsAll(elements)
+    override fun get(index: Int): AstroMediaItem = astroMediaItems[index]
+    override fun indexOf(element: AstroMediaItem): Int = astroMediaItems.indexOf(element)
+    override fun isEmpty(): Boolean = astroMediaItems.isEmpty()
+    override fun iterator(): Iterator<AstroMediaItem> = astroMediaItems.iterator()
+    override fun lastIndexOf(element: AstroMediaItem): Int = astroMediaItems.lastIndexOf(element)
+    override fun listIterator(): ListIterator<AstroMediaItem> = astroMediaItems.listIterator()
+    override fun listIterator(index: Int): ListIterator<AstroMediaItem = astroMediaItems.listIterator(index)
+
+    override fun subList(fromIndex: Int, toIndex: Int): List<AstroMediaItem> = astroMediaItems.subList(fromIndex, toIndex)
+    override fun toString(): String = astroMediaItems.toString()
 }
