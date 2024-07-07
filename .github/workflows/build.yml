@@ -5,14 +5,9 @@ on:
     push:
       branches:
         - '**'
-    pull_request:
-      types: [opened, ready_for_review, synchronize]
-      branches:
-        - '**'
 
 jobs:
   Android:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.draft == false && (contains(github.event.pull_request.labels.*.name, 'KMP') || contains(github.event.pull_request.labels.*.name, 'Android'))) }}
     runs-on: ubuntu-latest
 
     steps:
@@ -25,12 +20,14 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
+
+        # To fix ./gradlew: Permission denied
+      - run: chmod +x gradlew
 
       - name: Build Android
         run: ./gradlew astroplayer-core:build astroplayer-ui:build
 
   Desktop:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.draft == false && (contains(github.event.pull_request.labels.*.name, 'KMP') || contains(github.event.pull_request.labels.*.name, 'Desktop'))) }}
     runs-on: ubuntu-latest
 
     steps:
@@ -44,11 +41,13 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
+    # To fix ./gradlew: Permission denied
+      - run: chmod +x gradlew
+
       - name: Build Desktop
         run: ./gradlew astroplayer-core:desktopMainClasses astroplayer-core:desktopTestClasses astroplayer-ui:desktopMainClasses astroplayer-ui:desktopTestClasses
 
   iOS:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.draft == false && (contains(github.event.pull_request.labels.*.name, 'KMP') || contains(github.event.pull_request.labels.*.name, 'iOS'))) }}
     runs-on: macos-12
 
     steps:
@@ -62,10 +61,12 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
+    # To fix ./gradlew: Permission denied
+      - run: chmod +x gradlew
+
       - name: Build iOS Framework
         run: ./gradlew astroplayer-core:assembleXCFramework astroplayer-ui:assembleXCFramework
   Wasm:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.draft == false && (contains(github.event.pull_request.labels.*.name, 'KMP') || contains(github.event.pull_request.labels.*.name, 'WASM'))) }}
     runs-on: ubuntu-latest
 
     steps:
@@ -78,6 +79,9 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
+
+    # To fix ./gradlew: Permission denied
+      - run: chmod +x gradlew
 
       - name: Build WASM
         run: ./gradlew astroplayer-core:wasmJsMainClasses astroplayer-core:wasmJsTestClasses astroplayer-ui:wasmJsMainClasses astroplayer-ui:wasmJsTestClasses
