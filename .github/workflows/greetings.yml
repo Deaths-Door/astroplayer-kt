@@ -1,0 +1,28 @@
+name: Greetings
+
+on: [pull_request_target, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: |
+          Hi @${{ github.actor }}! 👋
+
+          Thank you for opening your first issue in the astroplayer-kt repository! We appreciate your interest in contributing to the project. Our community and maintainers will review your issue soon.
+
+          In the meantime, please make sure to:
+          - Describe the issue clearly and provide as much context as possible.
+          - Include any relevant code snippets or screenshots that might help us understand the issue better.
+
+          Thanks for helping us improve AstroPlayer!
+        pr-message: |
+          Hi @${{ github.actor }}! 👋
+
+          Thank you for submitting your first pull request to the astroplayer-kt repository! We truly appreciate your effort to contribute to the project. Our maintainers will review your pull request shortly.
