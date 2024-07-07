@@ -1,0 +1,43 @@
+workflows:
+- changed-files:
+  - any-glob-to-any-file: '.github/**'
+
+astro-core:
+- changed-files:
+  - any-glob-to-any-file: 'astroplayer-core/**'
+
+astro-ui:
+- changed-files:
+  - any-glob-to-any-file: 'astroplayer-ui/**'
+
+docs:
+- changed-files:
+  - any-glob-to-any-file: 'docs/**'
+
+
+android:
+- changed-files:
+  - any-glob-to-any-file: '**/**/androidMain'
+  - any-glob-to-any-file: '**/**/androidTest'
+
+ios:
+- changed-files:
+  - any-glob-to-any-file: '**/**/iosMain'
+  - any-glob-to-any-file: '**/**/iosTest'
+  - any-glob-to-any-file: '**/**/appleMain'
+  - any-glob-to-any-file: '**/**/appleTest'
+
+desktop:
+- changed-files:
+  - any-glob-to-any-file: '**/**/desktopMain'
+  - any-glob-to-any-file: '**/**/desktopTest'
+
+wasm:
+- changed-files:
+  - any-glob-to-any-file: '**/**/wasmJsMain'
+  - any-glob-to-any-file: '**/**/wasmJsTest'
+
+common:
+- changed-files:
+  - any-glob-to-any-file: '**/**/commonMain'
+  - any-glob-to-any-file: '**/**/commonTest'
