@@ -6,7 +6,12 @@ on:
       types: [opened, ready_for_review, synchronize]
 jobs:
   build:
+
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      
     steps:
     - name: Checkout sources
       uses: actions/checkout@v4
