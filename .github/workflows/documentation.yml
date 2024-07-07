@@ -2,8 +2,8 @@ name: Generate Documentation
 
 on:
   push:
-  pull_request:
-      types: [opened, ready_for_review, synchronize]
+    branches:
+        - main
 jobs:
   build:
 
