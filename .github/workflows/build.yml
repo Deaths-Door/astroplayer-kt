@@ -25,7 +25,7 @@ jobs:
       - run: chmod +x gradlew
 
       - name: Build Android
-        run: ./gradlew astroplayer-core:build astroplayer-ui:build
+        run: ./gradlew astroplayer-core:assemble astroplayer-ui:assemble
 
   Desktop:
     runs-on: ubuntu-latest
