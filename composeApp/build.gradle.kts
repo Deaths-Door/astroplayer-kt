@@ -51,8 +51,14 @@ kotlin {
     }
 
     sourceSets {
-        val desktopMain by getting
-        
+        val desktopMain by getting {
+            resources.srcDirs("assets/audio")
+
+            dependencies {
+                implementation(compose.desktop.currentOs)
+            }
+        }
+
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
@@ -65,11 +71,8 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
 
-            implementation("com.deathsdooor.astroplayer:astroplayer-core:0.1.0")
-            implementation("com.deathsdooor.astroplayer:astroplayer-ui:0.1.0")
-        }
-        desktopMain.dependencies {
-            implementation(compose.desktop.currentOs)
+            implementation(project(":astroplayer-core"))
+            implementation(project(":astroplayer-ui"))
         }
     }
 }
