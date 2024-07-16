@@ -27,45 +27,6 @@ import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-
-@Composable
-private fun AstroButton(
-    text : String,
-    onClick : () -> Unit
-) = Button(onClick = onClick) {
-    Text(text)
-}
-
-@Composable
-private fun <T> AstroValue(text : String, value : T) {
-    AstroButton("$text - $value"){}
-}
-
-
-@Composable
-private fun <T> AstroValueWithProduceState(text : String,value : () ->  T) {
-    val state by produceState(initialValue = value()) {
-        // https://stackoverflow.com/a/76331112/20243803
-        while(true) {
-            this.value = value()
-            delay(1000L)
-        }
-    }
-
-    AstroButton("$text - $state"){}
-}
-
-@Composable
-private fun AstroInput(label : String,then : (value : String) -> Unit) {
-    var value by remember { mutableStateOf("") }
-
-    TextField(
-        value = value,
-        label = { Text(label) },
-        onValueChange = { value = it;then(value) }
-    )
-}
-
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 @Preview
@@ -131,6 +92,5 @@ fun App(state: AstroPlayerState) = MaterialTheme {
 
         AstroValueWithProduceState("contentDuration"){state.astroPlayer.contentDuration}
         AstroValueWithProduceState("currentPosition"){state.astroPlayer.currentPosition}
-
     }
 }
