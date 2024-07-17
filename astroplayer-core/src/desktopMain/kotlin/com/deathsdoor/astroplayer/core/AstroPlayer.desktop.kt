@@ -12,11 +12,10 @@ import uk.co.caprica.vlcj.media.Meta
 import uk.co.caprica.vlcj.player.base.Equalizer
 import uk.co.caprica.vlcj.player.base.MediaPlayer
 import uk.co.caprica.vlcj.player.base.MediaPlayerEventAdapter
-import uk.co.caprica.vlcj.player.component.EmbeddedMediaListPlayerComponent
-import java.lang.Exception
+import uk.co.caprica.vlcj.player.component.AudioListPlayerComponent
 import java.util.Collections
 
-actual typealias NativeMediaPLayer = EmbeddedMediaListPlayerComponent
+actual typealias NativeMediaPLayer = AudioListPlayerComponent
 
 @Suppress("UNUSED")
 actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: NativeMediaPLayer) {
@@ -32,7 +31,8 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
     actual open fun pause() = _nativeMediaPlayer.controls().pause()
 
     actual open val isPlaying: Boolean get() = _nativeMediaPlayer.status().isPlaying
-    actual open val isPaused: Boolean get() = !_nativeMediaPlayer.status().isPlaying && _nativeMediaPlayer.media().info().audioTracks().size >= 1
+    actual open val isPaused: Boolean get() = !_nativeMediaPlayer.status().isPlaying && (_nativeMediaPlayer.media()
+        ?.info()?.audioTracks()?.size ?: 0) >= 1
     actual open var playBackSpeed: Float
         get() = _nativeMediaPlayer.status().rate()
         set(value) {
@@ -40,24 +40,33 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
             forEachListener { it.onPlaybackSpeedChanged(value) }
         }
 
-    private val rawVolume = _nativeMediaPlayer.audio().volume()
-    actual open val volume: Float get() = rawVolume.toFloat()
+    private val nativeVolume get() = _nativeMediaPlayer.audio().volume()
+    private fun adjustedVolume() : Float = nativeVolume.toFloat() / VOLUME_UPPER_LIMIT
+    private fun Float.asAdjustedVolume(): Int = (this * VOLUME_UPPER_LIMIT).toInt()
+
+    private fun changeNativeVolume(offset : Int) {
+        _nativeMediaPlayer.audio().setVolume(nativeVolume + offset)
+    }
+
+    actual open val volume: Float get() = adjustedVolume()
 
     actual open fun increaseVolume() {
-        _nativeMediaPlayer.audio().setVolume(rawVolume + 10)
+        changeNativeVolume(DEFAULT_VOLUME_CHANGE_OFFSET)
     }
 
     actual open fun decreaseVolume() {
-        _nativeMediaPlayer.audio().setVolume(rawVolume - 10)
+        changeNativeVolume(-DEFAULT_VOLUME_CHANGE_OFFSET)
     }
 
     actual open fun increaseVolumeBy(offset : Float) {
-        _nativeMediaPlayer.audio().setVolume(rawVolume + offset.toInt())
+        changeNativeVolume(offset.asAdjustedVolume())
     }
 
     actual open fun decreaseVolumeBy(offset : Float) {
-        _nativeMediaPlayer.audio().setVolume(rawVolume - offset.toInt())
+        changeNativeVolume(-offset.asAdjustedVolume())
     }
+
+
     actual open val isMuted : Boolean get() = _nativeMediaPlayer.audio().isMute
 
     actual open fun mute() {
@@ -96,6 +105,8 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
     actual open fun addMediaItem(item: AstroMediaItem) {
         astroMediaItems.add(item)
 
+        nativeMediaPlayer.mediaPlayer().media().prepare(item.source.toString())
+
         val mediaItem = nativeMediaPlayer.mediaPlayer().media().newMedia().apply {
             meta().apply metadata@ {
                 val astroMetadata = item.metadata ?: return@metadata
@@ -108,7 +119,6 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
                 set(Meta.TRACK_NUMBER, astroMetadata.trackNumber.toString())
                 set(Meta.DESCRIPTION, astroMetadata.description)
                 set(Meta.DATE, astroMetadata.releaseDay.toString())
-                set(Meta.URL, item.source.toString())
                 set(Meta.ARTWORK_URL, astroMetadata.artworkUri.toString())
                 set(Meta.TRACK_TOTAL, astroMetadata.totalTrackCount.toString())
                 set(Meta.DISC_NUMBER, astroMetadata.discNumber.toString())
@@ -145,7 +155,7 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
     }
 
     actual open fun removeMediaItems(fromIndex: Int, toIndex: Int) {
-        // No removeRange function availiable
+        // No removeRange function available
         // Refer to this [this](https://youtrack.jetbrains.com/issue/KT-13951/MutableList-is-missing-a-method-to-remove-multiple-items-by-position-or-range)
         astroMediaItems.subList(fromIndex,toIndex).clear()
 
@@ -351,5 +361,8 @@ actual open class AstroPlayer actual constructor(private val nativeMediaPlayer: 
         nativeMediaPlayer.mediaPlayer().events().removeMediaPlayerEventListener(astroNativeListener)
     }
 
-    actual companion object
+    actual companion object {
+        private const val VOLUME_UPPER_LIMIT = 100
+        private const val DEFAULT_VOLUME_CHANGE_OFFSET : Int = 10
+    }
 }
