@@ -53,7 +53,6 @@ kotlin {
         commonMain.dependencies {
             api(libs.multiplatform.uri)
             implementation(libs.kotlinx.coroutines.core)
-
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -69,6 +68,11 @@ kotlin {
         val desktopMain by getting {
             dependencies {
                 api(libs.vlcj)
+
+
+                // For Thread-Safe Queue Management
+                implementation("co.touchlab:stately-concurrency:2.0.0")
+                implementation(libs.stately.concurrency)
             }
         }
 

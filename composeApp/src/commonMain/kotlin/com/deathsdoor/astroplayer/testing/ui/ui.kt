@@ -1,3 +1,6 @@
+package com.deathsdoor.astroplayer.testing.ui
+
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
@@ -7,6 +10,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.input.KeyboardType
 import kotlinx.coroutines.delay
 
 @Composable
@@ -42,6 +46,7 @@ internal fun AstroInput(label : String, then : (value : String) -> Unit) {
     TextField(
         value = value,
         label = { Text(label) },
-        onValueChange = { value = it;then(value) }
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        onValueChange = { value = it.trim().replace("\n","").replace("\r","");if(value.isNotEmpty()) then(value) }
     )
 }
